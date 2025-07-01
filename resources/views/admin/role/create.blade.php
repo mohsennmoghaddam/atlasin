@@ -1,47 +1,45 @@
 @extends('admin.layout.master')
 
 @section('content')
-
-    <div class="row" dir="rtl">
-        <div>
-            <div style="padding-top:50px;padding-bottom:200px" >
-                <div class="col-12 col-xl-7 col-sm" style="margin: auto;">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title"><b>ایجاد نقش </b></h4>
-                            <h6 class="card-subtitle text-muted"></h6>
-                        </div>
-                        <div class="card-body">
-                            <form action="{{route('role.store')}}" method="post" >
-                                @csrf
-                                <div class="mb-2">
-                                    <label class="form-label" for="value">نام دوره </label>
-                                    <input type="text"  name="name" class="form-control" placeholder="اجباری" id="name">
-                                </div>
-                                <button type="submit" class="btn btn-success" style="margin:auto;">ثبت دوره </button>
-                            </form>
-                        </div>
-                    </div>
+    <div class="container" dir="rtl">
+        <div class="col-xl-8 mx-auto mt-4">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">ایجاد نقش جدید</h5>
                 </div>
 
-                @if(count($errors->all()) > 0)
+                <div class="card-body">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $error)
+                                    <li class="small">{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
-                    <ul>
+                    <form action="{{ route('role.store') }}" method="POST">
+                        @csrf
 
-                        @foreach($errors->all() as $error)
-                            <li class="has-error text-danger">{{$error}}</li>
-                        @endforeach
-                    </ul>
-                @endif
+                        <div class="mb-3">
+                            <label for="name" class="form-label">نام نقش (role)</label>
+                            <input type="text" name="name" id="name"
+                                   class="form-control" placeholder="مثلاً: admin, editor, staff"
+                                   value="{{ old('name') }}" required>
+                        </div>
 
-
-
+                        <div class="text-end mt-4">
+                            <button type="submit" class="btn btn-success">
+                                <i class="bx bx-save"></i> ذخیره
+                            </button>
+                            <a href="{{ route('role.index') }}" class="btn btn-secondary">
+                                بازگشت
+                            </a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-
-
-
-
+    </div>
 @endsection
-
-

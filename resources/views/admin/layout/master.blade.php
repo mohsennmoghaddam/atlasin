@@ -220,29 +220,29 @@
 {{--                                </li>--}}
                             </ul>
                         </li>
-{{--                        <li class="menu-item">--}}
-{{--                            <a href="javascript:void(0);" class="menu-link menu-toggle">--}}
-{{--                                <i class="menu-icon tf-icons bx bxs-coupon"></i>--}}
-{{--                                <div data-i18n="Account Settings"> دوره </div>--}}
-{{--                            </a>--}}
-{{--                            <ul class="menu-sub">--}}
-{{--                                <li class="menu-item">--}}
-{{--                                    <a href="{{route('course.index')}}" class="menu-link">--}}
-{{--                                        <div data-i18n="title course">جدول عنوان دوره ها</div>--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
+                        <li class="menu-item">
+                            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                                <i class="menu-icon tf-icons bx bxs-coupon"></i>
+                                <div data-i18n="Account Settings"> ویژگی ها اطلسین </div>
+                            </a>
+                            <ul class="menu-sub">
+                                <li class="menu-item">
+                                    <a href="{{route('why-uses.index')}}" class="menu-link">
+                                        <div data-i18n="title course">جدول ویژگی ها</div>
+                                    </a>
+                                </li>
 {{--                                <li class="menu-item">--}}
 {{--                                    <a href="{{route('subcourse.index')}}" class="menu-link">--}}
-{{--                                        <div data-i18n="subcourse">جدول دوره ها </div>--}}
+{{--                                        <div data-i18n="subcourse"></div>--}}
 {{--                                    </a>--}}
 {{--                                </li>--}}
-{{--                                <li class="menu-item">--}}
-{{--                                    <a href="{{route('subcourse.create')}}" class="menu-link">--}}
-{{--                                        <div data-i18n="subcourse index">ایجاد دوره جدید</div>--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
-{{--                            </ul>--}}
-{{--                        </li>--}}
+                                <li class="menu-item">
+                                    <a href="{{route('why-uses.create')}}" class="menu-link">
+                                        <div data-i18n="subcourse index">ایجاد ویژگی</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
 
 {{--                        <li class="menu-item">--}}
 {{--                            <a href="javascript:void(0);" class="menu-link menu-toggle">--}}
@@ -364,7 +364,7 @@
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item">
-                            <a href="" class="menu-link">
+                            <a href="{{route('users.index')}}" class="menu-link">
                                 <div data-i18n="Account">جدول مشاهده کاربران</div>
                             </a>
                         </li>
@@ -438,7 +438,7 @@
                             </a>
                             <ul class="menu-sub">
                                 <li class="menu-item">
-                                    <a href="" class="menu-link">
+                                    <a href="{{route('role.index')}}" class="menu-link">
                                         <div data-i18n="">جدول نقش ها  </div>
                                     </a>
                                 </li>
@@ -448,8 +448,8 @@
                                     </a>
                                 </li>
                                 <li class="menu-item">
-                                    <a href="" class="menu-link">
-                                        <div data-i18n="">ایجاد دسترسی </div>
+                                    <a href="{{route('permission.index')}}" class="menu-link">
+                                        <div data-i18n="">لیست دسترسی </div>
                                     </a>
                                 </li>
                             </ul>

@@ -3,6 +3,11 @@
 @section('content')
     <div class="container-fluid" dir="rtl">
         <div class="row justify-content-center">
+
+            @if(session('success'))
+                <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
+
             <div class="col-xl-10 mt-4">
                 <div class="card shadow">
                     <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">

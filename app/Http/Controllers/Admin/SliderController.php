@@ -50,7 +50,7 @@ class SliderController extends Controller
 
         $slider->save();
 
-        return redirect()->route('slider.index')->with('success',trans('admin.saveSuccess'));
+        return redirect()->route('slider.index')->with('success',trans('اسلایدر با موفقیت ایجا شد'));
     }
 
     /**
