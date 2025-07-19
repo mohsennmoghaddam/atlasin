@@ -22,6 +22,9 @@ class Otp extends Model
         'updated_at',
     ];
 
+
+
+
     // رابطه با مدل User
     public function user()
     {
@@ -35,8 +38,9 @@ class Otp extends Model
      */
     public function isValid()
     {
-        return $this->expires_at && $this->expires_at->isFuture();
+        return \Carbon\Carbon::parse($this->expires_at)->isFuture();
     }
+
 
     /**
      * حذف OTP های منقضی شده

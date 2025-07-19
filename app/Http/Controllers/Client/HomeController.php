@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\ContactService;
+use App\Models\Hospital;
 use App\Models\Slider;
 use App\Models\TeamMember;
 use App\Models\WhyUs;
@@ -26,11 +27,13 @@ class HomeController extends Controller
         $about = About::with('icons')->first();
 
         $whyUs = WhyUs::with('items')->first();
+
+        $hospitals =  Hospital::all();
         // مسیر ویو طبق زبان
         if ($locale === 'fa') {
-            return view('client.FA.home.index', compact('sliders' , 'about' , 'services' , 'members' , 'whyUs'));
+            return view('client.FA.home.index', compact('sliders' , 'about' , 'services' , 'members' , 'whyUs' , 'hospitals'));
         } else {
-            return view('client.EN.home.index', compact('sliders' , 'about' , 'services' , 'members' , 'whyUs'));
+            return view('client.EN.home.index', compact('sliders' , 'about' , 'services' , 'members' , 'whyUs' ,  'hospitals'));
         }
     }
 }

@@ -58,86 +58,6 @@
     <!-- Carousel End -->
 
     <!-- About Start -->
-{{--    <div class="container-xxl py-5">--}}
-{{--        <div class="container">--}}
-{{--            <div class="row g-5">--}}
-{{--                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">--}}
-{{--                    <div--}}
-{{--                        class="position-relative overflow-hidden rounded ps-5 pt-5 h-100"--}}
-{{--                        style="min-height: 400px"--}}
-{{--                    >--}}
-{{--                        <img--}}
-{{--                            class="position-absolute w-100 h-100"--}}
-{{--                            src="client/img/about.jpg"--}}
-{{--                            alt=""--}}
-{{--                            style="object-fit: cover"--}}
-{{--                        />--}}
-{{--                        <div--}}
-{{--                            class="position-absolute top-0 start-0 bg-white rounded pe-3 pb-3"--}}
-{{--                            style="width: 200px; height: 200px"--}}
-{{--                        >--}}
-{{--                            <div--}}
-{{--                                class="d-flex flex-column justify-content-center text-center bg-primary rounded h-100 p-3"--}}
-{{--                            >--}}
-{{--                                <h2 class="text-white">با بیش از</h2>--}}
-{{--                                <h1 class="text-light mb-0">36</h1>--}}
-{{--                                <h2 class="text-white"> سال سابقه</h2>--}}
-{{--                                <h5 class="text-white mb-0">سابقه</h5>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">--}}
-{{--                    <div class="h-100">--}}
-{{--                        <h1 class="display-6 mb-5">--}}
-{{--                            We're Here To Assist You With Exploring Protection--}}
-{{--                        </h1>--}}
-{{--                        <p class="fs-5 text-primary mb-4">--}}
-{{--                            Aliqu diam amet diam et eos. Clita erat ipsum et lorem sed stet--}}
-{{--                            lorem sit clita duo justo erat amet--}}
-{{--                        </p>--}}
-{{--                        <div class="row g-4 mb-4">--}}
-{{--                            <div class="col-sm-6">--}}
-{{--                                <div class="d-flex align-items-center">--}}
-{{--                                    <img--}}
-{{--                                        class="flex-shrink-0 me-3"--}}
-{{--                                        src="client/img/icon/icon-04-primary.png"--}}
-{{--                                        alt=""--}}
-{{--                                    />--}}
-{{--                                    <h5 class="mb-0">Flexible Insurance Plans</h5>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-sm-6">--}}
-{{--                                <div class="d-flex align-items-center">--}}
-{{--                                    <img--}}
-{{--                                        class="flex-shrink-0 me-3"--}}
-{{--                                        src="client/img/icon/icon-03-primary.png"--}}
-{{--                                        alt=""--}}
-{{--                                    />--}}
-{{--                                    <h5 class="mb-0">Money Back Guarantee</h5>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <p class="mb-4">--}}
-{{--                            Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit.--}}
-{{--                            Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit,--}}
-{{--                            sed stet lorem sit clita duo justo magna dolore erat amet--}}
-{{--                        </p>--}}
-{{--                        <div class="border-top mt-4 pt-4">--}}
-{{--                            <div class="d-flex align-items-center">--}}
-{{--                                <img--}}
-{{--                                    class="flex-shrink-0 rounded-circle me-3"--}}
-{{--                                    src="client/img/profile.jpg"--}}
-{{--                                    alt=""--}}
-{{--                                />--}}
-{{--                                <h5 class="mb-0">Call Us: +012 345 6789</h5>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
     <div class="container-xxl py-5" dir="rtl">
         <div class="container">
             <div class="row g-5">
@@ -147,8 +67,9 @@
                         <img class="position-absolute w-100 h-100" src="{{ asset('storage/' . $about->main_image) }}" alt="about image" style="object-fit: cover" />
                         <div class="position-absolute top-0 end-0 bg-white rounded ps-3 pb-3" style="width: 200px; height: 200px">
                             <div class="d-flex flex-column justify-content-center text-center bg-primary rounded h-100 p-3">
-                                <h1 class="text-white mb-0">{{ $about->experience_years }}</h1>
+
                                 <h2 class="text-white">{{ json_decode($about->experience_text_top)->fa ?? '' }}</h2>
+                                <h1 class="text-white mb-0">{{ $about->experience_years }}</h1>
                                 <h5 class="text-white mb-0">{{ json_decode($about->experience_text_bottom)->fa ?? '' }}</h5>
                             </div>
                         </div>
@@ -185,23 +106,20 @@
             </div>
         </div>
     </div>
-
     <!-- About End -->
 
-    <!-- Facts Start -->
-    <div class="container-fluid overflow-hidden my-5 px-lg-0">
+    <!-- list of center Start -->
+    <div class="container-fluid overflow-hidden my-5 px-lg-0 text-center">
         <div class="container facts px-lg-0">
             <div class="row g-0 mx-lg-0">
-                <div class="col-lg-6 facts-text wow fadeIn" data-wow-delay="0.1s">
+                <div class="col-lg-6 facts-text wow fadeIn" data-wow-delay="0.1s" >
                     <div class="h-100 px-4 ps-lg-0">
-                        <h1 class="text-white mb-4">For Individuals And Organisations</h1>
+                        <h1 class="text-white mb-4">دستاورد ها و مراکز نصب </h1>
                         <p class="text-light mb-5">
-                            Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit.
-                            Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit,
-                            sed stet lorem sit clita duo justo magna dolore erat amet
+                            اطلسین با افختار و با تیکه بر  هدف رضایت مشتری توانسته است به بیش از 600 مرکز مهم سبلمت کشور خدمت رسانی کند
                         </p>
-                        <a href="" class="align-self-start btn btn-secondary py-3 px-5"
-                        >More Details</a
+{{--                        <a href="" class="align-self-start btn btn-secondary py-3 px-5"--}}
+{{--                        >More Details</a--}}
                         >
                     </div>
                 </div>
@@ -209,65 +127,21 @@
                     <div class="h-100 px-4 pe-lg-0">
                         <div class="row g-5">
                             <div class="col-sm-6">
-                                <h1 class="display-5" data-toggle="counter-up">1234</h1>
-                                <p class="fs-5 text-primary">Happy Clients</p>
+                                <h1 class="display-5" data-toggle="counter-up">+600</h1>
+                                <p class="fs-5 text-primary"> مرکز نصب فعال</p>
                             </div>
                             <div class="col-sm-6">
-                                <h1 class="display-5" data-toggle="counter-up">1234</h1>
-                                <p class="fs-5 text-primary">Projects Succeed</p>
-                            </div>
-                            <div class="col-sm-6">
-                                <h1 class="display-5" data-toggle="counter-up">1234</h1>
-                                <p class="fs-5 text-primary">Awards Achieved</p>
-                            </div>
-                            <div class="col-sm-6">
-                                <h1 class="display-5" data-toggle="counter-up">1234</h1>
-                                <p class="fs-5 text-primary">Team Members</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid overflow-hidden my-5 px-lg-0" style="background-color: #f0f0f0">
-        <div class="container px-lg-0">
-            <div class="row g-5">
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="h-100 px-4 ps-lg-0">
-                        <h1 class="text-primary mb-4">مراکز نصب ما</h1>
-                        <div class="row g-3">
-{{--                            @foreach($centers as $center)--}}
-                                <div class="col-4 col-sm-3 text-center">
-{{--                                    <a href="{{ $center->website_url }}" target="_blank">--}}
-{{--                                        <img src="{{ asset('storage/' . $center->logo) }}" class="img-fluid" alt="logo" style="max-height: 80px;">--}}
-{{--                                        <p class="mt-2">{{ json_decode($center->title)->fa ?? '' }}</p>--}}
-                                    </a>
-                                </div>
-{{--                            @endforeach--}}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 facts-counter wow fadeIn" data-wow-delay="0.5s">
-                    <div class="h-100 px-4 pe-lg-0">
-                        <div class="row g-5">
-                            <div class="col-sm-6">
-                                <h1 class="display-5" data-toggle="counter-up">50</h1>
-                                <p class="fs-5 text-primary">مرکز نصب فعال</p>
-                            </div>
-                            <div class="col-sm-6">
-                                <h1 class="display-5" data-toggle="counter-up">1200</h1>
+                                <h1 class="display-5" data-toggle="counter-up">+600</h1>
                                 <p class="fs-5 text-primary">نصب موفق</p>
                             </div>
-                            <div class="col-sm-6">
-                                <h1 class="display-5" data-toggle="counter-up">15</h1>
-                                <p class="fs-5 text-primary">استان تحت پوشش</p>
-                            </div>
-                            <div class="col-sm-6">
-                                <h1 class="display-5" data-toggle="counter-up">24/7</h1>
-                                <p class="fs-5 text-primary">پشتیبانی دائم</p>
-                            </div>
+{{--                            <div class="col-sm-6">--}}
+{{--                                <h1 class="display-5" data-toggle="counter-up">1234</h1>--}}
+{{--                                <p class="fs-5 text-primary">Awards Achieved</p>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-sm-6">--}}
+{{--                                <h1 class="display-5" data-toggle="counter-up">1234</h1>--}}
+{{--                                <p class="fs-5 text-primary">Team Members</p>--}}
+{{--                            </div>--}}
                         </div>
                     </div>
                 </div>
@@ -328,10 +202,9 @@
             </div>
         </div>
     </div>
-
     <!-- Features End -->
 
-    <!-- Service Start -->
+    <!-- blogs Start -->
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto" style="max-width: 500px">
@@ -469,11 +342,10 @@
             </div>
         </div>
     </div>
-    <!-- Service End -->
+    <!-- blogs End -->
 
     <!-- Appointment Start -->
     @php $locale = app()->getLocale(); @endphp
-
     <div class="container-fluid appointment my-5 py-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row g-5">
@@ -561,8 +433,6 @@
             </div>
         </div>
     </div>
-
-
     <!-- Appointment End -->
 
     <!-- Team Start -->
@@ -732,99 +602,51 @@
     <!-- Team End -->
 
     <!-- Testimonial Start -->
-    <div class="container-xxl py-5">
+    <style>
+        .hospital-hover {
+            transition: all 0.3s;
+        }
+        .hospital-hover:hover {
+            background-color: #e8f0fe;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        }
+    </style>
+    <div class="container-xxl py-5 bg-white">
         <div class="container">
-            <div class="text-center mx-auto" style="max-width: 500px">
-                <h1 class="display-6 mb-5">What They Say About Our Insurance</h1>
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">مشتریان ما</h2>
+                <p class="text-muted">بیمارستان‌هایی که به ما اعتماد کرده‌اند</p>
             </div>
-            <div class="row g-5">
-                <div class="col-lg-3 d-none d-lg-block">
-                    <div class="testimonial-left h-100">
-                        <img
-                            class="img-fluid animated pulse infinite"
-                            src="client/img/testimonial-1.jpg"
-                            alt=""
-                        />
-                        <img
-                            class="img-fluid animated pulse infinite"
-                            src="client/img/testimonial-2.jpg"
-                            alt=""
-                        />
-                        <img
-                            class="img-fluid animated pulse infinite"
-                            src="client/img/testimonial-3.jpg"
-                            alt=""
-                        />
+
+            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-4 justify-content-center align-items-center">
+                @foreach($hospitals as $hospital)
+                    <div class="col text-center">
+                        <a href="{{ $hospital->website }}" target="_blank" class="d-block">
+                            <img src="{{ asset('storage/' . $hospital->image) }}"
+                                 alt="{{ $hospital->name }}"
+                                 class="img-fluid mx-auto d-block"
+                                 style="max-height: 80px; object-fit: contain">
+                        </a>
                     </div>
-                </div>
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="owl-carousel testimonial-carousel">
-                        <div class="testimonial-item text-center">
-                            <img
-                                class="img-fluid rounded mx-auto mb-4"
-                                src="img/testimonial-1.jpg"
-                                alt=""
-                            />
-                            <p class="fs-5">
-                                Dolores sed duo clita tempor justo dolor et stet lorem kasd
-                                labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy
-                                et labore et tempor diam tempor erat.
-                            </p>
-                            <h5>Client Name</h5>
-                            <span>Profession</span>
-                        </div>
-                        <div class="testimonial-item text-center">
-                            <img
-                                class="img-fluid rounded mx-auto mb-4"
-                                src="img/testimonial-2.jpg"
-                                alt=""
-                            />
-                            <p class="fs-5">
-                                Dolores sed duo clita tempor justo dolor et stet lorem kasd
-                                labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy
-                                et labore et tempor diam tempor erat.
-                            </p>
-                            <h5>Client Name</h5>
-                            <span>Profession</span>
-                        </div>
-                        <div class="testimonial-item text-center">
-                            <img
-                                class="img-fluid rounded mx-auto mb-4"
-                                src="img/testimonial-3.jpg"
-                                alt=""
-                            />
-                            <p class="fs-5">
-                                Dolores sed duo clita tempor justo dolor et stet lorem kasd
-                                labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy
-                                et labore et tempor diam tempor erat.
-                            </p>
-                            <h5>Client Name</h5>
-                            <span>Profession</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 d-none d-lg-block">
-                    <div class="testimonial-right h-100">
-                        <img
-                            class="img-fluid animated pulse infinite"
-                            src="img/testimonial-1.jpg"
-                            alt=""
-                        />
-                        <img
-                            class="img-fluid animated pulse infinite"
-                            src="img/testimonial-2.jpg"
-                            alt=""
-                        />
-                        <img
-                            class="img-fluid animated pulse infinite"
-                            src="img/testimonial-3.jpg"
-                            alt=""
-                        />
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
+
+    <style>
+        .partner-logo img {
+            transition: transform 0.3s ease-in-out;
+            filter: grayscale(100%);
+        }
+
+        .partner-logo img:hover {
+            filter: none;
+            transform: scale(1.05);
+        }
+    </style>
+
+
+
     <!-- Testimonial End -->
 
 

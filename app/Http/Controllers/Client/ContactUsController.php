@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
+use App\Models\ContactService;
 use App\Models\ContactUs;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,15 @@ class ContactUsController extends Controller
      */
     public function index()
     {
-        //
+        $locale = app()->getLocale(); // 'fa' یا 'en'
+        $services=ContactService::all();
+
+        if ($locale === 'fa') {
+
+            return view('client.FA.ContactUs.index', compact( 'locale' , 'services'));
+        } else {
+            return view('client.EN.ContactUs.index', compact( 'locale' , 'services'));
+        }
     }
 
     /**

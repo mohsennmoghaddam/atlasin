@@ -271,12 +271,12 @@ html[lang="en"] .sticky-top.sticky-active {
 }
 
 .container.facts .facts-text {
-    background: linear-gradient(rgba(1, 95, 201, .9), rgba(1, 95, 201, .9)), url(../img/carousel-1.jpg) center right no-repeat;
+    background: linear-gradient(rgba(1, 95, 201, .8), rgba(1, 95, 201, .8)), url(../img/vecteezy_hospital-building-for-healthcare-background-vector_.jpg) center right no-repeat;
     background-size: cover;
 }
 
 .container.facts .facts-counter {
-    background: linear-gradient(rgba(255, 255, 255, .9), rgba(255, 255, 255, .9)), url(../img/carousel-2.jpg) center right no-repeat;
+    background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(../img/vecteezy_a-cartoon-illustration-of-a-modern-hospital-building-with-a_47784176.jpg) center right no-repeat;
     background-size: cover;
 }
 

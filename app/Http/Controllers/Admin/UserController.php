@@ -78,7 +78,12 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        if ($user->hasRole('real-admin') && auth()->id() !== $user->id) {
+            abort(403, 'دسترسی غیرمجاز به کاربر real-admin');
+        }
+
+        $roles = Role::all();
+        return view('admin.user.edit', compact('user', 'roles'));
     }
 
     /**
@@ -86,14 +91,52 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'nullable|email',
+            'mobile' => 'nullable',
+            'role_id' => 'required|exists:roles,id',
+            'image' => 'nullable|image|max:2048',
+        ]);
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'mobile' => $request->mobile,
+        ]);
+
+        // آپلود تصویر جدید (در صورت وجود)
+        if ($request->hasFile('image')) {
+            $filename = time() . '.' . $request->image->extension();
+            $request->image->storeAs('users', $filename, 'public');
+            $user->image = $filename;
+            $user->save();
+        }
+
+        // بروزرسانی نقش
+        $user->roles()->sync([$request->role_id]);
+
+        return redirect()->route('users.index')->with('success', 'کاربر با موفقیت ویرایش شد.');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(User $user)
     {
-        //
+        // اگر عکس پروفایل داشته باشه، حذفش کن
+        if ($user->image && \Storage::disk('public')->exists('users/' . $user->image)) {
+            \Storage::disk('public')->delete('users/' . $user->image);
+        }
+
+        // جدا کردن نقش‌ها
+        $user->roles()->detach();
+
+        // حذف کاربر
+        $user->delete();
+
+        return redirect()->route('users.index')->with('success', 'کاربر با موفقیت حذف شد.');
     }
+
 }

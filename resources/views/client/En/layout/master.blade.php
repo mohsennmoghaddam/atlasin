@@ -116,25 +116,25 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav bg-light rounded pe-4 py-1 py-lg-0" style="margin-left:300px">
-            <a href="index.html" class="nav-item nav-link active">Home</a>
-            <a href="about.html" class="nav-item nav-link">About Us</a>
-            <a href="service.html" class="nav-item nav-link">Our Services</a>
-            <div class="nav-item dropdown">
-                <a
-                    href="#"
-                    class="nav-link dropdown-toggle"
-                    data-bs-toggle="dropdown"
-                >Pages</a
-                >
-                <div class="dropdown-menu bg-light border-0 m-0">
-                    <a href="feature.html" class="dropdown-item">Features</a>
-                    <a href="appointment.html" class="dropdown-item">Appointment</a>
-                    <a href="team.html" class="dropdown-item">Team Members</a>
-                    <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                    <a href="404.html" class="dropdown-item">404 Page</a>
-                </div>
-            </div>
-            <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+            <a href="{{route('clients.index')}}" class="nav-item nav-link active">Home</a>
+            <a href="{{route('clients.aboutUs')}}" class="nav-item nav-link">About Us</a>
+            <a href="{{route('clients.ourService')}}" class="nav-item nav-link">Our Services</a>
+{{--            <div class="nav-item dropdown">--}}
+{{--                <a--}}
+{{--                    href="#"--}}
+{{--                    class="nav-link dropdown-toggle"--}}
+{{--                    data-bs-toggle="dropdown"--}}
+{{--                >Pages</a--}}
+{{--                >--}}
+{{--                <div class="dropdown-menu bg-light border-0 m-0">--}}
+{{--                    <a href="feature.html" class="dropdown-item">Features</a>--}}
+{{--                    <a href="appointment.html" class="dropdown-item">Appointment</a>--}}
+{{--                    <a href="team.html" class="dropdown-item">Team Members</a>--}}
+{{--                    <a href="testimonial.html" class="dropdown-item">Testimonial</a>--}}
+{{--                    <a href="404.html" class="dropdown-item">404 Page</a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+            <a href="{{route('clients.ContactUS')}}" class="nav-item nav-link">Contact Us</a>
         </div>
     </div>
 

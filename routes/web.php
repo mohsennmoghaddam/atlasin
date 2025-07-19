@@ -24,6 +24,12 @@ Route::get('lang/{locale}', function ($locale) {
 
     Route::post('/contact', [ContactUsController::class, 'store'])->name('contact.store');
 
+    Route::get('/aboutUs', [\App\Http\Controllers\client\AboutController::class, 'index'])->name('aboutUs');
+
+    Route::get('/ourService', [\App\Http\Controllers\client\OurServiceController::class, 'index'])->name('ourService');
+
+    Route::get('/ContactUS', [\App\Http\Controllers\client\ContactUsController::class, 'index'])->name('ContactUS');
+
     });
 
 
@@ -31,12 +37,29 @@ Route::get('lang/{locale}', function ($locale) {
 
     Route::post('/login/send-otp', [\App\Http\Controllers\Admin\AuthController::class, 'sendOtp'])->name('login.sendOtp');
 
+    // نمایش فرم مرحله دوم (ورود OTP + رمز مخفی)
+    Route::get('/login/verify', [\App\Http\Controllers\Admin\AuthController::class, 'showVerifyForm'])->name('login.verifyForm');
 
-    // admin
+    // بررسی و اعتبارسنجی کد وارد شده
+    Route::post('/login/verify', [\App\Http\Controllers\Admin\AuthController::class, 'verifyOtp'])->name('login.verifyOtp');
+
+    // نمایش فرم رمز ایستا
+    Route::get('/login/password', [\App\Http\Controllers\Admin\AuthController::class, 'showPasswordForm'])->name('login.passwordForm');
+
+    // بررسی رمز ایستا و ورود نهایی
+    Route::post('/login/password', [\App\Http\Controllers\Admin\AuthController::class, 'loginWithPassword'])->name('login.password');
+
+    Route::get('/logout', [\App\Http\Controllers\Admin\AuthController::class, 'logout'])->name('logout');
+
+
+
+// admin
     Route::prefix('AtlassianPanelCo')
 
         ->middleware([
 
+            App\Http\Middleware\Auth::class ,
+            \App\Http\Middleware\CheckPermission::class. ':show-panel',
 
         ])
         ->group(function () {
@@ -73,6 +96,15 @@ Route::get('lang/{locale}', function ($locale) {
             ]);
 
             Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
+
+            Route::resource('/admin/testimonials', \App\Http\Controllers\Admin\TestimonialController::class);
+            Route::resource('/admin/hospitals', \App\Http\Controllers\Admin\HospitalController::class);
+            Route::resource('/admin/partners', \App\Http\Controllers\Admin\PartnerImageController::class);
+
+
+            Route::resource('blogs', \App\Http\Controllers\Admin\BlogController::class);
+            Route::resource('blogs-categories', \App\Http\Controllers\Admin\BlogCategoryController::class);
+
 
         });
 

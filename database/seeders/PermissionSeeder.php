@@ -82,19 +82,19 @@ class PermissionSeeder extends Seeder
 
         Permission::query()->insert([
             [
-                'name'=> 'read-blog',
+                'name'=> 'read-blogs',
                 'guard_name'=>'مشاهده مطالب وبلاگ '
             ],
             [
-                'name'=> 'create-blog',
+                'name'=> 'create-blogs',
                 'guard_name'=>'ایجاد مطالب وبلاگ '
             ],
             [
-                'name'=> 'update-blog',
+                'name'=> 'update-blogs',
                 'guard_name'=>'ویرایش مطالب وبلاگ'
             ],
             [
-                'name'=> 'delete-blog',
+                'name'=> 'delete-blogs',
                 'guard_name'=>'حذف مطالب وبلاگ'
             ],
         ]);

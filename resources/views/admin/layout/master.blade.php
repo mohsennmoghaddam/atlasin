@@ -244,29 +244,24 @@
                             </ul>
                         </li>
 
-{{--                        <li class="menu-item">--}}
-{{--                            <a href="javascript:void(0);" class="menu-link menu-toggle">--}}
-{{--                                <i class="menu-icon tf-icons bx bxs-category"></i>--}}
-{{--                                <div data-i18n="Account Settings"> دوره ها </div>--}}
-{{--                            </a>--}}
-{{--                            <ul class="menu-sub">--}}
-{{--                                <li class="menu-item">--}}
-{{--                                    <a href="" class="menu-link">--}}
-{{--                                        <div data-i18n="title course">جدول دسته بندی دوره ها</div>--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
-{{--                                <li class="menu-item">--}}
-{{--                                    <a href="" class="menu-link">--}}
-{{--                                        <div data-i18n="subcourse">جدول دوره ها </div>--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
-{{--                                <li class="menu-item">--}}
-{{--                                    <a href="" class="menu-link">--}}
-{{--                                        <div data-i18n="subcourse index">ایجاد دوره جدید</div>--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
-{{--                            </ul>--}}
-{{--                        </li>--}}
+                        <li class="menu-item">
+                            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                                <i class="menu-icon tf-icons bx bxs-category"></i>
+                                <div data-i18n="Account Settings"> بیمارستان ها </div>
+                            </a>
+                            <ul class="menu-sub">
+                                <li class="menu-item">
+                                    <a href="{{route('hospitals.index')}}" class="menu-link">
+                                        <div data-i18n="title course">لیست بیمارستان ها</div>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="" class="menu-link">
+                                        <div data-i18n="subcourse index">ایجاد دوره جدید</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
 
 
 {{--                        <li class="menu-item">--}}
@@ -457,7 +452,7 @@
                     </ul>
                 </li>
 
-                <!-- blog -->
+                <!-- blogs -->
                 <li class="menu-item">
                     <a href="javascript:void(0)" class="menu-link menu-toggle">
                         <i class="menu-icon tf-icons bx bxl-blogger"></i>
@@ -465,15 +460,16 @@
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item">
-                            <a href="" class="menu-link">
+                            <a href="{{route('blogs.index')}}" class="menu-link">
                                 <div data-i18n="Accordion">جدول مطالب</div>
                             </a>
                         </li>
-{{--                        <li class="menu-item">--}}
-{{--                            <a href="ui-alerts.html" class="menu-link">--}}
-{{--                                <div data-i18n="Alerts">Alerts</div>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
+
+                        <li class="menu-item">
+                            <a href="{{route('blogs-categories.index')}}" class="menu-link">
+                                <div data-i18n="Alerts">دسته بندی موضوعات</div>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
@@ -733,21 +729,20 @@
 {{--                        </li>--}}
 
      <!-- User -->
-
+                        @auth()
                         <li class="nav-item navbar-dropdown dropdown-user dropdown">
                             <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                                 <div class="avatar avatar-online">
-                                    <img src="/admin/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                                    <img src="{{ $currentUser->avatar ? asset('storage/' . $currentUser->avatar) : asset('assets/img/avatars/1.png') }}" class="w-px-40 h-auto rounded-circle" />
                                 </div>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li>
-{{--                                    @auth()--}}
                                     <a class="dropdown-item" href="#">
                                         <div class="d-flex">
                                             <div class="flex-shrink-0 me-3">
                                                 <div class="avatar avatar-online">
-                                                    <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                                                    <img src="{{ $currentUser->avatar ? asset('storage/' . $currentUser->avatar) : asset('assets/img/avatars/1.png') }}" class="w-px-40 h-auto rounded-circle" />
                                                 </div>
                                             </div>
 {{--                                            @php--}}
@@ -764,44 +759,44 @@
 {{--                                            </div>--}}
 {{--                                            @else--}}
                                                 <div class="flex-grow-1">
-                                                    <span class="fw-semibold d-block">jone</span>
-                                                    <small class="text-muted">Admin</small>
+                                                    <span class="fw-semibold d-block">{{ $currentUser->name }}</span>
+                                                    <small class="text-muted">{{ $currentRole ?? 'بدون نقش' }}</small>
                                                 </div>
 {{--                                            @endisset--}}
 
                                         </div>
                                     </a>
-{{--                                    @endauth--}}
+                                    @endauth
                                 </li>
-                                <li>
-                                    <div class="dropdown-divider"></div>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="">
-                                        <i class="bx bx-user me-2"></i>
-                                        <span class="align-middle">My Profile</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="bx bx-cog me-2"></i>
-                                        <span class="align-middle">Settings</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">
-                        <span class="d-flex align-items-center align-middle">
-                          <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                          <span class="flex-grow-1 align-middle">Billing</span>
-                          <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <div class="dropdown-divider"></div>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="auth-login-basic.html">
+{{--                                <li>--}}
+{{--                                    <div class="dropdown-divider"></div>--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <a class="dropdown-item" href="">--}}
+{{--                                        <i class="bx bx-user me-2"></i>--}}
+{{--                                        <span class="align-middle">My Profile</span>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <a class="dropdown-item" href="#">--}}
+{{--                                        <i class="bx bx-cog me-2"></i>--}}
+{{--                                        <span class="align-middle">Settings</span>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <a class="dropdown-item" href="#">--}}
+{{--                        <span class="d-flex align-items-center align-middle">--}}
+{{--                          <i class="flex-shrink-0 bx bx-credit-card me-2"></i>--}}
+{{--                          <span class="flex-grow-1 align-middle">Billing</span>--}}
+{{--                          <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>--}}
+{{--                        </span>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <div class="dropdown-divider"></div>--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+                                    <a class="dropdown-item" href="{{route('logout')}}">
                                         <i class="bx bx-power-off me-2"></i>
                                         <span class="align-middle">Log Out</span>
                                     </a>
@@ -829,29 +824,29 @@
                 <footer class="content-footer footer bg-footer-theme">
                     <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
                         <div class="mb-2 mb-md-0">
-                            ©
+                            © تمامی حقوق این سایت مربوط به شرکت اطلسین می باشد
                             <script>
                                 document.write(new Date().getFullYear());
                             </script>
-                            , made with ❤️ by
-                            <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
+
+                            <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder"></a>
                         </div>
                         <div>
-                            <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
-                            <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
+                            <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank"></a>
+                            <a href="https://themeselection.com/" target="_blank" class="footer-link me-4"></a>
 
                             <a
                                     href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
                                     target="_blank"
                                     class="footer-link me-4"
-                            >Documentation</a
+                            ></a
                             >
 
                             <a
                                     href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
                                     target="_blank"
                                     class="footer-link me-4"
-                            >Support</a
+                            ></a
                             >
                         </div>
                     </div>
