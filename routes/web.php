@@ -105,7 +105,6 @@ Route::get('lang/{locale}', function ($locale) {
             Route::resource('blogs', \App\Http\Controllers\Admin\BlogController::class);
             Route::resource('blogs-categories', \App\Http\Controllers\Admin\BlogCategoryController::class);
 
-
         });
 
 
