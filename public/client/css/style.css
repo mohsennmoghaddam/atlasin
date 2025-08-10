@@ -95,6 +95,7 @@ html[lang="fa"] .sticky-top.sticky-active {
     /*background-color: #fff;*/
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    font-family: IRANSansWeb , 'serif' !important;
 }
 
 html[lang="en"] .sticky-top.sticky-active {

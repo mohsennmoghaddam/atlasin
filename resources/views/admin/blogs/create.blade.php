@@ -72,7 +72,6 @@
         ClassicEditor.create(document.querySelector('#editor-en')).catch(error => console.error(error));
     </script>
 
-
 @endsection
 
 

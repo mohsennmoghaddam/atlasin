@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}" dir="{{ app()->getLocale() == 'fa' ? 'rtl' : 'ltr' }}">
+<html lang="{{ app()->getLocale() }}" dir="{{ app()->getLocale() == 'fa' ? 'rtl' : 'ltr' }}" style="font-family: IRANSansWeb , 'serif'">
 <head>
     <meta charset="utf-8" />
     <title>اطلسین</title>
@@ -95,7 +95,7 @@
 
 <!-- Navbar Start -->
 <nav
-    class="navbar navbar-expand-lg navbar-light sticky-top py-1"
+    class="navbar navbar-expand-lg navbar-light sticky-top py-1 h6"
 >
     <a href="index.html" class="navbar-brand d-flex align-items-center">
         <h1 class="m-0">
@@ -114,26 +114,139 @@
     >
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse" style="direction: rtl; margin-right:435px">
+    <div class="collapse navbar-collapse h6" id="navbarCollapse" style="direction: rtl; margin-right:435px; font-family:IRANSansWeb; " >
         <div class="navbar-nav bg-light rounded pe-4 py-1 py-lg-0">
             <a href="{{route('clients.index')}}" class="nav-item nav-link active">خانه</a>
             <a href="{{route('clients.aboutUs')}}" class="nav-item nav-link">درباره ی ما</a>
             <a href="{{route('clients.ourService')}}" class="nav-item nav-link">خدمات </a>
-{{--            <div class="nav-item dropdown">--}}
-{{--                <a--}}
-{{--                    href="#"--}}
-{{--                    class="nav-link dropdown-toggle"--}}
-{{--                    data-bs-toggle="dropdown"--}}
-{{--                >صفحات</a--}}
-{{--                >--}}
-{{--                <div class="dropdown-menu bg-light border-0 m-0">--}}
-{{--                    <a href="feature.html" class="dropdown-item">Features</a>--}}
-{{--                    <a href="appointment.html" class="dropdown-item">Appointment</a>--}}
-{{--                    <a href="team.html" class="dropdown-item">Team Members</a>--}}
-{{--                    <a href="testimonial.html" class="dropdown-item">Testimonial</a>--}}
-{{--                    <a href="404.html" class="dropdown-item">404 Page</a>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+            <!-- نسخه فارسی منو با ساب‌منوهای راست به چپ -->
+            <!-- منوی اصلی محصولات -->
+            <!-- منوی اصلی محصولات -->
+            <div class="nav-item dropdown position-relative">
+                <a class="nav-link dropdown-toggle" href="#" id="productMenu" data-bs-toggle="dropdown">
+                    محصولات ما
+                </a>
+                <div class="dropdown-menu bg-white border-0 rounded-3 shadow-sm m-0 p-2 text-end" dir="rtl">
+                    <!-- دسته اصلی: بیمارستانی -->
+                    <div class="position-relative category-item">
+                        <a href="#" class="dropdown-item show-submenu fw-semibold" data-target="hospitalSub">بیمارستانی</a>
+                        <div class="submenu-box rounded-3">
+                            <a href="#" class="dropdown-item">اکسیژن‌ساز</a>
+                            <a href="#" class="dropdown-item">هوای فشرده</a>
+                            <a href="#" class="dropdown-item">وکیوم</a>
+                            <a href="#" class="dropdown-item">جمع‌آوری گاز بیهوشی</a>
+                        </div>
+                    </div>
+                    <!-- صنعتی -->
+                    <div class="position-relative category-item">
+                        <a href="#" class="dropdown-item show-submenu fw-semibold" data-target="industrialSub">صنعتی</a>
+                        <div class="submenu-box rounded-3">
+                            <a href="#" class="dropdown-item">اکسیژن صنعتی</a>
+                            <a href="#" class="dropdown-item">نیتروژن</a>
+                        </div>
+                    </div>
+
+                    <!-- خانگی -->
+                    <div class="position-relative category-item">
+                        <a href="{{route('clients.homecare')}}" class="dropdown-item show-submenu fw-semibold" data-target="homeSub">خانگی</a>
+                        <div class="submenu-box rounded-3">
+                            <a href="#" class="dropdown-item">اکسیژن‌ساز خانگی</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <style>
+                .submenu-box {
+                    display: none;
+                    position: absolute;
+                    top: 0;
+                    right: 100%;
+                    background: #ffffff;
+                    min-width: 180px;
+                    padding: 0.5rem 0;
+                    border: 1px solid #e0e0e0;
+                    z-index: 1000;
+                    transition: all 0.2s ease-in-out;
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+                }
+
+                .category-item:hover .submenu-box {
+                    display: block;
+                }
+
+                .dropdown-item {
+                    padding: 8px 15px;
+                    font-size: 14px;
+                    color: #333;
+                    border-radius: 0;
+                    transition: background 0.2s;
+                }
+
+                .dropdown-item:hover {
+                    background-color: #f1f1f1;
+                    color: #000;
+                }
+
+                .dropdown-menu {
+                    border-radius: 12px;
+                    border: 1px solid #e0e0e0;
+                }
+
+                .nav-link {
+                    color: #000 !important;
+                    font-weight: 500;
+                }
+            </style>
+
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const mainCategories = document.querySelectorAll(".main-category");
+                    const subMenus = document.querySelectorAll(".submenu-container");
+
+                    mainCategories.forEach(item => {
+                        item.addEventListener("mouseenter", function () {
+                            const targetId = this.getAttribute("data-target");
+
+                            // پنهان کردن همه‌ی زیردسته‌ها
+                            subMenus.forEach(menu => menu.style.display = "none");
+
+                            // نمایش زیردسته‌ی مرتبط
+                            const targetMenu = document.getElementById(targetId);
+                            if (targetMenu) {
+                                targetMenu.style.display = "block";
+                            }
+                        });
+                    });
+
+                    // وقتی از منو خارج شدیم، زیردسته پنهان شه
+                    document.addEventListener("mouseover", function (e) {
+                        if (!e.target.closest(".dropdown-menu") && !e.target.closest(".submenu-container")) {
+                            subMenus.forEach(menu => menu.style.display = "none");
+                        }
+                    });
+                });
+            </script>
+
+            <!-- ساید پنجره زیردسته‌ها -->
+            <div class="submenu-container bg-white border shadow-sm p-2" id="hospitalSub">
+                <a href="#" class="dropdown-item">اکسیژن‌ساز</a>
+                <a href="#" class="dropdown-item">هوای فشرده</a>
+                <a href="#" class="dropdown-item">وکیوم</a>
+                <a href="#" class="dropdown-item">جمع‌آوری گاز بیهوشی</a>
+            </div>
+
+            <div class="submenu-container bg-white border shadow-sm p-2" id="industrialSub">
+                <a href="#" class="dropdown-item">اکسیژن صنعتی</a>
+                <a href="#" class="dropdown-item">نیتروژن</a>
+            </div>
+
+            <div class="submenu-container bg-white border shadow-sm p-2" id="homecareSub">
+                <a href="#" class="dropdown-item">اکسیژن‌ساز خانگی</a>
+            </div>
+
+
             <a href="{{route('clients.ContactUS')}}" class="nav-item nav-link">ارتباط با ما</a>
         </div>
     </div>
@@ -333,6 +446,35 @@
 <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"
 ><i class="bi bi-arrow-up"></i
     ></a>
+
+
+<style>
+    .dropdown-submenu {
+        position: relative;
+    }
+
+    .dropdown-submenu .dropdown-menu {
+        top: 0;
+        right: 100%; /* برای RTL */
+        left: auto;
+        display: none;
+        margin-top: -1px;
+        min-width: 200px;
+        z-index: 1000;
+    }
+
+    .dropdown-submenu:hover .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-submenu > a::after {
+        content: "◄";
+        float: left;
+        margin-top: 5px;
+        margin-left: 5px;
+    }
+</style>
+
 
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

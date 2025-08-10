@@ -65,12 +65,11 @@
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="position-relative overflow-hidden rounded pe-5 pt-5 h-100" style="min-height: 400px">
                         <img class="position-absolute w-100 h-100" src="{{ asset('storage/' . $about->main_image) }}" alt="about image" style="object-fit: cover" />
-                        <div class="position-absolute top-0 end-0 bg-white rounded ps-3 pb-3" style="width: 200px; height: 200px">
+                        <div class="position-absolute top-0 end-0 bg-white rounded ps-3 pb-3" style="width: 250px; height: 250px">
                             <div class="d-flex flex-column justify-content-center text-center bg-primary rounded h-100 p-3">
-
-                                <h2 class="text-white">{{ json_decode($about->experience_text_top)->fa ?? '' }}</h2>
+                                <h2 class="text-white mb-0">{{ json_decode($about->experience_text_top)->fa ?? '' }}</h2>
                                 <h1 class="text-white mb-0">{{ $about->experience_years }}</h1>
-                                <h5 class="text-white mb-0">{{ json_decode($about->experience_text_bottom)->fa ?? '' }}</h5>
+                                <h2 class="text-white">{{ json_decode($about->experience_text_bottom)->fa ?? '' }}</h2>
                             </div>
                         </div>
                     </div>
@@ -148,7 +147,6 @@
             </div>
         </div>
     </div>
-
     <!-- Facts End -->
 
     <!-- Features Start -->
@@ -205,7 +203,7 @@
     <!-- Features End -->
 
     <!-- blogs Start -->
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-5" style="direction: ltr; !important;">
         <div class="container">
             <div class="text-center mx-auto" style="max-width: 500px">
                 <h1 class="display-6 mb-5">
@@ -221,7 +219,7 @@
                             >
                                 <img
                                     class="img-fluid"
-                                    src="img/icon/icon-10-light.png"
+                                    src="client/img/icon/icon-10-light.png"
                                     alt=""
                                 />
                             </div>
@@ -242,7 +240,7 @@
                             >
                                 <img
                                     class="img-fluid"
-                                    src="img/icon/icon-01-light.png"
+                                    src="client/img/icon/icon-01-light.png"
                                     alt=""
                                 />
                             </div>
@@ -263,7 +261,7 @@
                             >
                                 <img
                                     class="img-fluid"
-                                    src="img/icon/icon-05-light.png"
+                                    src="client/img/icon/icon-05-light.png"
                                     alt=""
                                 />
                             </div>
@@ -284,7 +282,7 @@
                             >
                                 <img
                                     class="img-fluid"
-                                    src="img/icon/icon-08-light.png"
+                                    src="client/img/icon/icon-08-light.png"
                                     alt=""
                                 />
                             </div>
@@ -305,7 +303,7 @@
                             >
                                 <img
                                     class="img-fluid"
-                                    src="img/icon/icon-07-light.png"
+                                    src="client/img/icon/icon-07-light.png"
                                     alt=""
                                 />
                             </div>
@@ -326,7 +324,7 @@
                             >
                                 <img
                                     class="img-fluid"
-                                    src="img/icon/icon-06-light.png"
+                                    src="client/img/icon/icon-06-light.png"
                                     alt=""
                                 />
                             </div>
@@ -417,12 +415,11 @@
                     </p>
                     <div class="bg-white rounded p-3">
                         <div class="d-flex align-items-center bg-primary rounded p-3">
-                            <img class="flex-shrink-0 rounded-circle me-3" src="client/img/profile.jpg" alt="" />
-                            <h5 class="text-white mb-0" style="text-align: {{ $locale == 'fa' ? 'right' : 'left' }};">
+                            <h5 class="text-white" style="text-align: {{ $locale == 'fa' ? 'right' : 'left' }};">
                                 @if($locale == 'fa')
-                                    تماس با ما: ۰۲۱-۱۲۳۴۵۶۷۸
+                                    تماس با ما: 02188725435
                                 @else
-                                    Call Us: +98 21 12345678
+                                    Call Us: +98 2188725435
                                 @endif
                             </h5>
                         </div>
@@ -632,7 +629,6 @@
             </div>
         </div>
     </div>
-
     <style>
         .partner-logo img {
             transition: transform 0.3s ease-in-out;
@@ -644,9 +640,6 @@
             transform: scale(1.05);
         }
     </style>
-
-
-
     <!-- Testimonial End -->
 
 

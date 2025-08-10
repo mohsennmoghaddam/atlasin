@@ -8,12 +8,14 @@
         data-wow-delay="0.1s"
     >
         <div class="container py-5" style="direction: rtl;!important;">
-            <h1 class="display-4 animated slideInDown mb-4">در باره ی ما </h1>
+            <h1 class="display-4 animated slideInDown mb-4 text-white">در باره ی ما </h1>
             <nav aria-label="breadcrumb animated slideInDown">
-                <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a href="#">خانه</a></li>
-                    <li class="breadcrumb-item"><a href="#">صفحات</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">درباره ی ما</li>
+                <ol class="breadcrumb mb-0 text-white" style="color: whitesmoke !important;">
+                    <li class="text-white" style="color: whitesmoke !important;><a href="#"> خانه/</a></li>
+                    <li class="text-white" style="color: whitesmoke !important;><a href="#"> صفحات/</a></li>
+                    <li class="active text-white" style="color: whitesmoke !important;" aria-current="page">
+                        درباره ی ما
+                    </li>
                 </ol>
             </nav>
         </div>

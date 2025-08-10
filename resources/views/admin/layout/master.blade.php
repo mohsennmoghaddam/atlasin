@@ -4,7 +4,7 @@
 * Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
 ==============================================================
 
-* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
+* feature Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
 * Created by: ThemeSelection
 * License: You must have a valid license purchased in order to legally use the theme for your project.
 * Copyright ThemeSelection (https://themeselection.com)
@@ -473,6 +473,25 @@
                     </ul>
                 </li>
 
+                <li class="menu-item">
+                    <a href="javascript:void(0)" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons bx bxl-blogger"></i>
+                        <div data-i18n="User interface">صفحه ی محصولات خانگی</div>
+                    </a>
+                    <ul class="menu-sub">
+                        <li class="menu-item">
+                            <a href="{{route('homecare.index')}}" class="menu-link">
+                                <div data-i18n="Accordion">نوشته ی بخش اول</div>
+                            </a>
+                        </li>
+
+                        <li class="menu-item">
+                            <a href="{{route('homecare.create')}}" class="menu-link">
+                                <div data-i18n="Alerts">ایجاد نوشته ی بخش اول</div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <!-- Cards -->
 {{--                <li class="menu-item">--}}
 {{--                    <a href="cards-basic.html" class="menu-link">--}}

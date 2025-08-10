@@ -171,7 +171,6 @@
             </div>
         </div>
     </div>
-
     <!-- About End -->
 
     <!-- Facts Start -->
@@ -268,7 +267,6 @@
             </div>
         </div>
     </div>
-
     <!-- Features End -->
 
     <!-- Service Start -->
@@ -432,14 +430,13 @@
                             Atlasin Company is a medical equipment manufacturer specializing in hospital oxygen generator systems. By utilizing cutting-edge technology and adhering to international standards, the company provides reliable and efficient oxygen solutions for healthcare facilities.
                         @endif
                     </p>
-                    <div class="bg-white rounded p-3">
+                    <div class="bg-white rounded p-3" style="direction: rtl">
                         <div class="d-flex align-items-center bg-primary rounded p-3">
-                            <img class="flex-shrink-0 rounded-circle me-3" src="client/img/profile.jpg" alt="" />
-                            <h5 class="text-white mb-0">
+                            <h5 class="text-white ">
                                 @if($locale == 'fa')
-                                    تماس با ما: ۰۲۱-۱۲۳۴۵۶۷۸
+                                    تماس با ما :  02188725435
                                 @else
-                                    Call Us: +98 21 12345678
+                                    Call Us: +98 2188725435
                                 @endif
                             </h5>
                         </div>
@@ -502,107 +499,7 @@
             </div>
         </div>
     </div>
-
-    <div
-        class="container-fluid appointment my-5 py-5 wow fadeIn"
-        data-wow-delay="0.1s"
-    >
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
-                    <h1 class="display-6 text-white mb-5">
-                        We're Award Winning Insurance Company
-                    </h1>
-                    <p class="text-white mb-5">
-                        Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed
-                        stet lorem sit clita duo justo magna dolore erat amet. Tempor erat
-                        elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet
-                        diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit
-                        clita duo justo magna.
-                    </p>
-                    <div class="bg-white rounded p-3">
-                        <div class="d-flex align-items-center bg-primary rounded p-3">
-                            <img
-                                class="flex-shrink-0 rounded-circle me-3"
-                                src="img/profile.jpg"
-                                alt=""
-                            />
-                            <h5 class="text-white mb-0">Call Us: +012 345 6789</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="bg-white rounded p-5">
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-sm-6">
-                                    <div class="form-floating">
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="gname"
-                                            placeholder="Gurdian Name"
-                                        />
-                                        <label for="gname">Your Name</label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-floating">
-                                        <input
-                                            type="email"
-                                            class="form-control"
-                                            id="gmail"
-                                            placeholder="Gurdian Email"
-                                        />
-                                        <label for="gmail">Your Email</label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-floating">
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="cname"
-                                            placeholder="Child Name"
-                                        />
-                                        <label for="cname">Your Mobile</label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-floating">
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="cage"
-                                            placeholder="Child Age"
-                                        />
-                                        <label for="cage">Service Type</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                      <textarea
-                          class="form-control"
-                          placeholder="Leave a message here"
-                          id="message"
-                          style="height: 80px"
-                      ></textarea>
-                                        <label for="message">Message</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary py-3 px-5" type="submit">
-                                        Get Appointment
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Appointment End -->
+  <!-- Appointment End -->
 
     <!-- Team Start -->
 {{--    <div class="container-xxl py-5">--}}
@@ -815,106 +712,50 @@
             </div>
         </div>
     </div>
-
-
-
-
     <!-- Team End -->
 
     <!-- Testimonial Start -->
-    <div class="container-xxl py-5">
+    <style>
+        .hospital-hover {
+            transition: all 0.3s;
+        }
+        .hospital-hover:hover {
+            background-color: #e8f0fe;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        }
+    </style>
+    <div class="container-xxl py-5 bg-white">
         <div class="container">
-            <div class="text-center mx-auto" style="max-width: 500px">
-                <h1 class="display-6 mb-5">What They Say About Our Insurance</h1>
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Our customers </h2>
+                <p class="text-muted">Hospitals that have trusted us</p>
             </div>
-            <div class="row g-5">
-                <div class="col-lg-3 d-none d-lg-block">
-                    <div class="testimonial-left h-100">
-                        <img
-                            class="img-fluid animated pulse infinite"
-                            src="img/testimonial-1.jpg"
-                            alt=""
-                        />
-                        <img
-                            class="img-fluid animated pulse infinite"
-                            src="img/testimonial-2.jpg"
-                            alt=""
-                        />
-                        <img
-                            class="img-fluid animated pulse infinite"
-                            src="img/testimonial-3.jpg"
-                            alt=""
-                        />
+
+            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-4 justify-content-center align-items-center">
+                @foreach($hospitals as $hospital)
+                    <div class="col text-center">
+                        <a href="{{ $hospital->website }}" target="_blank" class="d-block">
+                            <img src="{{ asset('storage/' . $hospital->image) }}"
+                                 alt="{{ $hospital->name }}"
+                                 class="img-fluid mx-auto d-block"
+                                 style="max-height: 80px; object-fit: contain">
+                        </a>
                     </div>
-                </div>
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="owl-carousel testimonial-carousel">
-                        <div class="testimonial-item text-center">
-                            <img
-                                class="img-fluid rounded mx-auto mb-4"
-                                src="img/testimonial-1.jpg"
-                                alt=""
-                            />
-                            <p class="fs-5">
-                                Dolores sed duo clita tempor justo dolor et stet lorem kasd
-                                labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy
-                                et labore et tempor diam tempor erat.
-                            </p>
-                            <h5>Client Name</h5>
-                            <span>Profession</span>
-                        </div>
-                        <div class="testimonial-item text-center">
-                            <img
-                                class="img-fluid rounded mx-auto mb-4"
-                                src="img/testimonial-2.jpg"
-                                alt=""
-                            />
-                            <p class="fs-5">
-                                Dolores sed duo clita tempor justo dolor et stet lorem kasd
-                                labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy
-                                et labore et tempor diam tempor erat.
-                            </p>
-                            <h5>Client Name</h5>
-                            <span>Profession</span>
-                        </div>
-                        <div class="testimonial-item text-center">
-                            <img
-                                class="img-fluid rounded mx-auto mb-4"
-                                src="img/testimonial-3.jpg"
-                                alt=""
-                            />
-                            <p class="fs-5">
-                                Dolores sed duo clita tempor justo dolor et stet lorem kasd
-                                labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy
-                                et labore et tempor diam tempor erat.
-                            </p>
-                            <h5>Client Name</h5>
-                            <span>Profession</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 d-none d-lg-block">
-                    <div class="testimonial-right h-100">
-                        <img
-                            class="img-fluid animated pulse infinite"
-                            src="img/testimonial-1.jpg"
-                            alt=""
-                        />
-                        <img
-                            class="img-fluid animated pulse infinite"
-                            src="img/testimonial-2.jpg"
-                            alt=""
-                        />
-                        <img
-                            class="img-fluid animated pulse infinite"
-                            src="img/testimonial-3.jpg"
-                            alt=""
-                        />
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
+    <style>
+        .partner-logo img {
+            transition: transform 0.3s ease-in-out;
+            filter: grayscale(100%);
+        }
+
+        .partner-logo img:hover {
+            filter: none;
+            transform: scale(1.05);
+        }
+    </style>
     <!-- Testimonial End -->
 
 @endsection

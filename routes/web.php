@@ -30,6 +30,9 @@ Route::get('lang/{locale}', function ($locale) {
 
     Route::get('/ContactUS', [\App\Http\Controllers\client\ContactUsController::class, 'index'])->name('ContactUS');
 
+    Route::get('/homecare', [\App\Http\Controllers\Client\HomecareController::class, 'index'])->name('homecare');
+
+
     });
 
 
@@ -104,6 +107,17 @@ Route::get('lang/{locale}', function ($locale) {
 
             Route::resource('blogs', \App\Http\Controllers\Admin\BlogController::class);
             Route::resource('blogs-categories', \App\Http\Controllers\Admin\BlogCategoryController::class);
+
+            Route::resource('homecare', \App\Http\Controllers\Admin\HomecareSectionController::class);
+            Route::resource('homecare-sliders', \App\Http\Controllers\Admin\HomecareSliderController::class);
+            Route::resource('homecare-cards', \App\Http\Controllers\Admin\HomecareProductCardController::class);
+            Route::resource('homecare-texts', \App\Http\Controllers\Admin\HomecareTextSectionController::class);
+            Route::resource('homecare-features', \App\Http\Controllers\Admin\HomecareProductFeatureController::class);
+            Route::resource('homecare-mask-categories', \App\Http\Controllers\Admin\HomecareMaskCategoryController::class);
+            Route::delete('homecare-mask-items/{item}', [\App\Http\Controllers\Admin\HomecareMaskCategoryController::class, 'destroyItem'])
+                ->name('homecare-mask-items.destroy');
+
+
 
         });
 

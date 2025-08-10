@@ -9,12 +9,14 @@
         data-wow-delay="0.1s"
     >
         <div class="container py-5">
-            <h1 class="display-4 animated slideInDown mb-4">Services</h1>
+            <h1 class="display-4 animated slideInDown mb-4 text-white">خدمات شرکت اطلسین</h1>
             <nav aria-label="breadcrumb animated slideInDown">
-                <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Services</li>
+                <ol class="breadcrumb mb-0 text-white" style="color: whitesmoke !important;">
+                    <li class="text-white" style="color: whitesmoke !important;><a href="#"> خانه/</a></li>
+                    <li class="text-white" style="color: whitesmoke !important;><a href="#"> صفحات/</a></li>
+                    <li class="active text-white" style="color: whitesmoke !important;" aria-current="page">
+                        خدمات
+                    </li>
                 </ol>
             </nav>
         </div>

@@ -119,21 +119,86 @@
             <a href="{{route('clients.index')}}" class="nav-item nav-link active">Home</a>
             <a href="{{route('clients.aboutUs')}}" class="nav-item nav-link">About Us</a>
             <a href="{{route('clients.ourService')}}" class="nav-item nav-link">Our Services</a>
-{{--            <div class="nav-item dropdown">--}}
-{{--                <a--}}
-{{--                    href="#"--}}
-{{--                    class="nav-link dropdown-toggle"--}}
-{{--                    data-bs-toggle="dropdown"--}}
-{{--                >Pages</a--}}
-{{--                >--}}
-{{--                <div class="dropdown-menu bg-light border-0 m-0">--}}
-{{--                    <a href="feature.html" class="dropdown-item">Features</a>--}}
-{{--                    <a href="appointment.html" class="dropdown-item">Appointment</a>--}}
-{{--                    <a href="team.html" class="dropdown-item">Team Members</a>--}}
-{{--                    <a href="testimonial.html" class="dropdown-item">Testimonial</a>--}}
-{{--                    <a href="404.html" class="dropdown-item">404 Page</a>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+            <!-- English Version -->
+            <!-- English Products Menu -->
+            <div class="nav-item dropdown position-relative">
+                <a class="nav-link dropdown-toggle" href="#" id="productMenuEn" data-bs-toggle="dropdown">
+                    Our Products
+                </a>
+                <div class="dropdown-menu bg-white border-0 rounded-3 shadow-sm m-0 p-2 text-start" dir="ltr">
+                    <!-- Hospital -->
+                    <div class="position-relative category-item">
+                        <a href="#" class="dropdown-item show-submenu fw-semibold" data-target="hospitalSubEn">Hospital</a>
+                        <div class="submenu-box rounded-3" id="hospitalSubEn">
+                            <a href="#" class="dropdown-item">Oxygen Generator</a>
+                            <a href="#" class="dropdown-item">Compressed Air</a>
+                            <a href="#" class="dropdown-item">Vacuum</a>
+                            <a href="#" class="dropdown-item">AGSS</a>
+                        </div>
+                    </div>
+                    <!-- Industrial -->
+                    <div class="position-relative category-item">
+                        <a href="#" class="dropdown-item show-submenu fw-semibold" data-target="industrialSubEn">Industrial</a>
+                        <div class="submenu-box rounded-3" id="industrialSubEn">
+                            <a href="#" class="dropdown-item">Industrial Oxygen</a>
+                            <a href="#" class="dropdown-item">Nitrogen</a>
+                        </div>
+                    </div>
+
+                    <!-- Homecare -->
+                    <div class="position-relative category-item">
+                        <a href="{{route('clients.homecare')}}" class="dropdown-item show-submenu fw-semibold" data-target="homeSubEn">Homecare</a>
+                        <div class="submenu-box rounded-3" id="homeSubEn">
+                            <a href="#" class="dropdown-item">Home Oxygen Generator</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <style>
+                .submenu-box {
+                    display: none;
+                    position: absolute;
+                    top: 0;
+                    left: 100%;
+                    background: #ffffff;
+                    min-width: 180px;
+                    padding: 0.5rem 0;
+                    border: 1px solid #e0e0e0;
+                    z-index: 1000;
+                    transition: all 0.2s ease-in-out;
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+                }
+
+                .category-item:hover .submenu-box {
+                    display: block;
+                }
+
+                .dropdown-item {
+                    padding: 8px 15px;
+                    font-size: 14px;
+                    color: #333;
+                    border-radius: 0;
+                    transition: background 0.2s;
+                }
+
+                .dropdown-item:hover {
+                    background-color: #f1f1f1;
+                    color: #000;
+                }
+
+                .dropdown-menu {
+                    border-radius: 12px;
+                    border: 1px solid #e0e0e0;
+                }
+
+                .nav-link {
+                    color: #000 !important;
+                    font-weight: 500;
+                }
+            </style>
+
+
             <a href="{{route('clients.ContactUS')}}" class="nav-item nav-link">Contact Us</a>
         </div>
     </div>
@@ -209,7 +274,7 @@
             <div class="col-lg-3 col-md-6">
                 {{--                <h5 class="text-white mb-4">اطلسین</h5>--}}
                 <div class="mb-3">
-                    <img src="client/img/icon/logo1.png" alt="لوگو" class="img-fluid mt-5 footer-logo" style="max-width: 500px;" />
+                    <img src="client/img/icon/logo1.png" alt="لوگو" class="img-fluid mt-5 footer-logo"/>
                 </div>
 
                 {{--                <p class="text-white">برای دریافت اخبار جدید ایمیل خود را وارد کنید.</p>--}}
