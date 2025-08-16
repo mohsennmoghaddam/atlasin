@@ -40,7 +40,7 @@ class BlogController extends Controller
             'content' => 'required|array',
             'image' => 'nullable|image',
             'status' => 'required|in:draft,published',
-            'categories' => 'nullable|array',
+            'category' => 'nullable|array',
         ]);
 
         // آپلود تصویر

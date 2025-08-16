@@ -642,5 +642,51 @@
     </style>
     <!-- Testimonial End -->
 
+    @if(isset($globalFaqs) ? $globalFaqs->count() : (isset($faqs) && $faqs->count()))
+        @php
+            $list = isset($globalFaqs) ? $globalFaqs : $faqs;
+            $dir = $locale=='fa' ? 'rtl' : 'ltr';
+            $alignQ = $locale=='fa' ? 'text-end' : 'text-start';
+            $alignA = $alignQ;
+        @endphp
+
+        <section class="container my-5" dir="{{ $dir }}">
+            <h3 class="fw-bold mb-4 {{ $alignQ }}">
+                {{ $locale=='fa' ? 'سؤالات متداول' : 'Frequently Asked Questions' }}
+            </h3>
+
+            <div class="accordion" id="faqAccordion">
+                @foreach($list as $i => $f)
+                    @php
+                        $q = $f->question[$locale] ?? ($f->question['fa'] ?? $f->question['en'] ?? '');
+                        $a = $f->answer[$locale]   ?? ($f->answer['fa']   ?? $f->answer['en']   ?? '');
+                    @endphp
+                    <div class="accordion-item shadow-sm mb-2 rounded">
+                        <h2 class="accordion-header" id="faq-h-{{ $i }}">
+                            <button class="accordion-button collapsed {{ $alignQ }}" type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#faq-c-{{ $i }}"
+                                    aria-expanded="false"
+                                    aria-controls="faq-c-{{ $i }}">
+                                {!! $q !!}
+                            </button>
+                        </h2>
+                        <div id="faq-c-{{ $i }}" class="accordion-collapse collapse" aria-labelledby="faq-h-{{ $i }}" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body {{ $alignA }}" style="line-height:1.9">
+                                {!! $a !!}
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </section>
+
+        <style>
+            .accordion-button { font-weight:600; }
+            .accordion-button:focus { box-shadow: none; }
+            .accordion-item { border: 1px solid #e9ecef; }
+        </style>
+    @endif
+
 
 @endsection

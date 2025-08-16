@@ -115,7 +115,7 @@ class HomecareMaskCategoryController extends Controller
             }
         }
 
-        return redirect()->route('homecare-mask-categories.edit', $homecare_mask_category)
+        return redirect()->route('homecare-mask-category.edit', $homecare_mask_category)
             ->with('success', 'ویرایش با موفقیت انجام شد.');
     }
 
@@ -127,7 +127,7 @@ class HomecareMaskCategoryController extends Controller
         }
         $homecare_mask_category->delete();
 
-        return redirect()->route('homecare-mask-categories.index')->with('success', 'گروه حذف شد.');
+        return redirect()->route('homecare-mask-category.index')->with('success', 'گروه حذف شد.');
     }
 
     // حذف آیتم تکی (اختیاری)

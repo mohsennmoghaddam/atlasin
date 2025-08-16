@@ -137,6 +137,7 @@
       <excludeFolder url="file://$MODULE_DIR$/storage/app/public/uploads" />
       <excludeFolder url="file://$MODULE_DIR$/storage/app/public/whyus" />
       <excludeFolder url="file://$MODULE_DIR$/vendor" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/app/public/homecare" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

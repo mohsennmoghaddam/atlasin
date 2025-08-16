@@ -8,35 +8,27 @@
     <meta content="" name="description" />
 
     <!-- Favicon -->
-    <link href="client/img/icon/logo1.png" rel="icon" />
+    <link rel="icon" href="{{ asset('client/img/icon/logo1.png') }}" />
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@600;700&display=swap"
-        rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
 
     <!-- Icon Font Stylesheet -->
-    <link
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-        rel="stylesheet"
-    />
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
-        rel="stylesheet"
-    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
 
     <!-- Libraries Stylesheet -->
-    <link href="client/lib/animate/animate.min.css" rel="stylesheet" />
-    <link href="client/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="{{ asset('client/lib/animate/animate.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('client/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="client/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="{{ asset('client/css/bootstrap.min.css') }}" rel="stylesheet" />
 
     <!-- Template Stylesheet -->
-    <link href="client/css/style.css" rel="stylesheet" />
+    <link href="{{ asset('client/css/style.css') }}" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -101,7 +93,7 @@
         <h1 class="m-0">
             <img
                 class="img-fluid me-3"
-                src="client/img/icon/logo1.png"
+                src="{{asset('client/img/icon/logo1.png')}}"
                 alt=""
             />
         </h1>
@@ -129,7 +121,7 @@
                 <div class="dropdown-menu bg-white border-0 rounded-3 shadow-sm m-0 p-2 text-end" dir="rtl">
                     <!-- دسته اصلی: بیمارستانی -->
                     <div class="position-relative category-item">
-                        <a href="#" class="dropdown-item show-submenu fw-semibold" data-target="hospitalSub">بیمارستانی</a>
+                        <a href="{{route('clients.hospital')}}" class="dropdown-item show-submenu fw-semibold" data-target="hospitalSub">بیمارستانی</a>
                         <div class="submenu-box rounded-3">
                             <a href="#" class="dropdown-item">اکسیژن‌ساز</a>
                             <a href="#" class="dropdown-item">هوای فشرده</a>
@@ -408,7 +400,7 @@
             <div class="col-lg-3 col-md-6">
 {{--                <h5 class="text-white mb-4">اطلسین</h5>--}}
                 <div class="mb-3">
-                    <img src="client/img/icon/logo1.png" alt="لوگو" class="img-fluid mt-5 footer-logo"/>
+                    <img src="{{asset('client/img/icon/logo1.png')}}" alt="لوگو" class="img-fluid mt-5 footer-logo"/>
                 </div>
 
 {{--                <p class="text-white">برای دریافت اخبار جدید ایمیل خود را وارد کنید.</p>--}}
@@ -479,13 +471,15 @@
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="client/lib/wow/wow.min.js"></script>
-<script src="client/lib/easing/easing.min.js"></script>
-<script src="client/lib/waypoints/waypoints.min.js"></script>
-<script src="client/lib/owlcarousel/owl.carousel.min.js"></script>
-<script src="client/lib/counterup/counterup.min.js"></script>
+
+<script src="{{ asset('client/lib/wow/wow.min.js') }}"></script>
+<script src="{{ asset('client/lib/easing/easing.min.js') }}"></script>
+<script src="{{ asset('client/lib/waypoints/waypoints.min.js') }}"></script>
+<script src="{{ asset('client/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('client/lib/counterup/counterup.min.js') }}"></script>
 
 <!-- Template Javascript -->
-<script src="client/js/main.js"></script>
+<script src="{{ asset('client/js/main.js') }}"></script>
+
 </body>
 </html>

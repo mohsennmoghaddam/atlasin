@@ -32,6 +32,15 @@ Route::get('lang/{locale}', function ($locale) {
 
     Route::get('/homecare', [\App\Http\Controllers\Client\HomecareController::class, 'index'])->name('homecare');
 
+    Route::get('/hospital', [\App\Http\Controllers\Client\HospitalController::class, 'index'])->name('hospital');
+
+    Route::get('/hospital/category/{slug}', [\App\Http\Controllers\Client\HospitalController::class, 'category'])->name('hospital.category');
+
+
+
+
+
+
 
     });
 
@@ -106,17 +115,33 @@ Route::get('lang/{locale}', function ($locale) {
 
 
             Route::resource('blogs', \App\Http\Controllers\Admin\BlogController::class);
-            Route::resource('blogs-categories', \App\Http\Controllers\Admin\BlogCategoryController::class);
+            Route::resource('blogs-category', \App\Http\Controllers\Admin\BlogCategoryController::class);
 
             Route::resource('homecare', \App\Http\Controllers\Admin\HomecareSectionController::class);
             Route::resource('homecare-sliders', \App\Http\Controllers\Admin\HomecareSliderController::class);
             Route::resource('homecare-cards', \App\Http\Controllers\Admin\HomecareProductCardController::class);
             Route::resource('homecare-texts', \App\Http\Controllers\Admin\HomecareTextSectionController::class);
             Route::resource('homecare-features', \App\Http\Controllers\Admin\HomecareProductFeatureController::class);
-            Route::resource('homecare-mask-categories', \App\Http\Controllers\Admin\HomecareMaskCategoryController::class);
+            Route::resource('homecare-mask-category', \App\Http\Controllers\Admin\HomecareMaskCategoryController::class);
             Route::delete('homecare-mask-items/{item}', [\App\Http\Controllers\Admin\HomecareMaskCategoryController::class, 'destroyItem'])
                 ->name('homecare-mask-items.destroy');
 
+            // routes/web.php  (داخل گروه ادمین خودت)
+            Route::resource('hospital-texts', \App\Http\Controllers\Admin\HospitalTextSectionController::class);
+
+            Route::resource('hospital-category', \App\Http\Controllers\Admin\HospitalCategoryController::class);
+
+            Route::resource('hospital-schematics', \App\Http\Controllers\Admin\HospitalCategorySchematicController::class);
+
+            Route::resource('hospital-summaries', \App\Http\Controllers\Admin\HospitalCategorySummaryController::class);
+
+            Route::resource('hospital-stages', \App\Http\Controllers\Admin\HospitalCategoryStageController::class);
+
+            Route::resource('hospital-catalogs', \App\Http\Controllers\Admin\HospitalCategoryCatalogController::class);
+
+            Route::resource('hospital-gallery', \App\Http\Controllers\Admin\HospitalCategoryImageController::class);
+
+            Route::resource('faqs', \App\Http\Controllers\Admin\FaqController::class);
 
 
         });

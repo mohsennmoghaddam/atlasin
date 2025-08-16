@@ -45,7 +45,7 @@ class BlogCategoryController extends Controller
             'slug' => $slug,
         ]);
 
-        return redirect()->route('blog-categories.index')->with('success', 'دسته‌بندی با موفقیت ایجاد شد.');
+        return redirect()->route('blog-category.index')->with('success', 'دسته‌بندی با موفقیت ایجاد شد.');
     }
 
 
@@ -85,7 +85,7 @@ class BlogCategoryController extends Controller
             'slug' => $slug,
         ]);
 
-        return redirect()->route('blogs-categories.index')->with('success', 'دسته‌بندی ویرایش شد.');
+        return redirect()->route('blogs-category.index')->with('success', 'دسته‌بندی ویرایش شد.');
     }
 
 

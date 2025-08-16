@@ -4,7 +4,7 @@
     <div class="container mt-4" dir="rtl">
         <h4 class="text-center mb-4">ایجاد گروه ماسک</h4>
 
-        <form action="{{ route('homecare-mask-categories.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('homecare-mask-category.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="row">

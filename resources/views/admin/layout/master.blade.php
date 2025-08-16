@@ -262,18 +262,17 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="menu-item">
+                            <a href="{{route('faqs.index') }}" class="menu-link">
+                                <div data-i18n="Container">سوالات متداول</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="layouts-fluid.html" class="menu-link">
+                                <div data-i18n="Fluid">Fluid</div>
+                            </a>
+                        </li>
 
-
-{{--                        <li class="menu-item">--}}
-{{--                            <a href="layouts-container.html" class="menu-link">--}}
-{{--                                <div data-i18n="Container">Container</div>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        <li class="menu-item">--}}
-{{--                            <a href="layouts-fluid.html" class="menu-link">--}}
-{{--                                <div data-i18n="Fluid">Fluid</div>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
 {{--                        <li class="menu-item">--}}
 {{--                            <a href="layouts-blank.html" class="menu-link">--}}
 {{--                                <div data-i18n="Blank">Blank</div>--}}
@@ -466,7 +465,7 @@
                         </li>
 
                         <li class="menu-item">
-                            <a href="{{route('blogs-categories.index')}}" class="menu-link">
+                            <a href="{{route('blogs-category.index')}}" class="menu-link">
                                 <div data-i18n="Alerts">دسته بندی موضوعات</div>
                             </a>
                         </li>
@@ -496,31 +495,31 @@
 {{--                <li class="menu-item">--}}
 {{--                    <a href="cards-basic.html" class="menu-link">--}}
 {{--                        <i class="menu-icon tf-icons bx bx-collection"></i>--}}
-{{--                        <div data-i18n="Basic">Cards</div>--}}
+{{--                        <div data-i18n="Basic">بخش بیمارستانی</div>--}}
 {{--                    </a>--}}
 {{--                </li>--}}
                 <!-- User interface -->
-{{--                <li class="menu-item">--}}
-{{--                    <a href="javascript:void(0)" class="menu-link menu-toggle">--}}
-{{--                        <i class="menu-icon tf-icons bx bx-box"></i>--}}
-{{--                        <div data-i18n="User interface">User interface</div>--}}
-{{--                    </a>--}}
-{{--                    <ul class="menu-sub">--}}
-{{--                        <li class="menu-item">--}}
-{{--                            <a href="ui-accordion.html" class="menu-link">--}}
-{{--                                <div data-i18n="Accordion">Accordion</div>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
+                <li class="menu-item">
+                    <a href="javascript:void(0)" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons bx bx-box"></i>
+                        <div data-i18n="User interface">بخش بیمارستانی</div>
+                    </a>
+                    <ul class="menu-sub">
+                        <li class="menu-item">
+                            <a href="{{route('hospital-texts.index')}}" class="menu-link">
+                                <div data-i18n="Accordion">صغحه ی محصولات بیمارستانی</div>
+                            </a>
+                        </li>
 {{--                        <li class="menu-item">--}}
 {{--                            <a href="ui-alerts.html" class="menu-link">--}}
-{{--                                <div data-i18n="Alerts">Alerts</div>--}}
+{{--                                <div data-i18n="Alerts">محصولات بیمارستانی</div>--}}
 {{--                            </a>--}}
 {{--                        </li>--}}
-{{--                        <li class="menu-item">--}}
-{{--                            <a href="ui-badges.html" class="menu-link">--}}
-{{--                                <div data-i18n="Badges">Badges</div>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
+                        <li class="menu-item">
+                            <a href="{{route('hospital-schematics.index')}}" class="menu-link">
+                                <div data-i18n="Badges">دسته بندی محصولات</div>
+                            </a>
+                        </li>
 {{--                        <li class="menu-item">--}}
 {{--                            <a href="ui-buttons.html" class="menu-link">--}}
 {{--                                <div data-i18n="Buttons">Buttons</div>--}}
@@ -631,9 +630,9 @@
 {{--                    </a>--}}
 {{--                </li>--}}
 
-                <!-- Forms & Tables -->
+{{--                <!-- Forms & Tables -->--}}
 {{--                <li class="menu-header small text-uppercase"><span class="menu-header-text">Forms &amp; Tables</span></li>--}}
-                <!-- Forms -->
+{{--                <!-- Forms -->--}}
 {{--                <li class="menu-item">--}}
 {{--                    <a href="javascript:void(0);" class="menu-link menu-toggle">--}}
 {{--                        <i class="menu-icon tf-icons bx bx-detail"></i>--}}
@@ -670,14 +669,14 @@
 {{--                        </li>--}}
 {{--                    </ul>--}}
 {{--                </li>--}}
-                <!-- Tables -->
+{{--                <!-- Tables -->--}}
 {{--                <li class="menu-item">--}}
 {{--                    <a href="tables-basic.html" class="menu-link">--}}
 {{--                        <i class="menu-icon tf-icons bx bx-table"></i>--}}
 {{--                        <div data-i18n="Tables">Tables</div>--}}
 {{--                    </a>--}}
 {{--                </li>--}}
-                <!-- Misc -->
+{{--                <!-- Misc -->--}}
 {{--                <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>--}}
 {{--                <li class="menu-item">--}}
 {{--                    <a--}}
@@ -700,7 +699,7 @@
 {{--                    </a>--}}
 {{--                </li>--}}
 
-            </ul>
+{{--            </ul>--}}
         </aside>
         <!-- / Menu -->
 

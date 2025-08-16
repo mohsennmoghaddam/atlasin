@@ -296,7 +296,7 @@
                 <div class="card shadow">
                     <div class="card-header d-flex justify-content-between align-items-center bg-info text-white">
                         <h5 class="mb-0"><b>گروه ماسک‌ها</b></h5>
-                        <a href="{{ route('homecare-mask-categories.create') }}" class="btn btn-light btn-sm">
+                        <a href="{{ route('homecare-mask-category.create') }}" class="btn btn-light btn-sm">
                             <i class="bx bx-plus-circle"></i> افزودن گروه
                         </a>
                     </div>
@@ -322,9 +322,9 @@
                                     <td>{{ $c->title['en'] ?? '' }}</td>
                                     <td>{{ $c->items_count }}</td>
                                     <td>{{ $c->order }}</td>
-                                    <td><a href="{{ route('homecare-mask-categories.edit', $c) }}" class="btn btn-warning btn-sm">ویرایش</a></td>
+                                    <td><a href="{{ route('homecare-mask-category.edit', $c) }}" class="btn btn-warning btn-sm">ویرایش</a></td>
                                     <td>
-                                        <form action="{{ route('homecare-mask-categories.destroy', $c) }}" method="POST" onsubmit="return confirm('حذف شود؟')">
+                                        <form action="{{ route('homecare-mask-category.destroy', $c) }}" method="POST" onsubmit="return confirm('حذف شود؟')">
                                             @csrf @method('DELETE')
                                             <button class="btn btn-danger btn-sm">حذف</button>
                                         </form>
