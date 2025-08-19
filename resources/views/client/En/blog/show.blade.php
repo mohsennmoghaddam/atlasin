@@ -66,7 +66,7 @@
 
             {{-- بازگشت --}}
             <div class="mt-4">
-                <a href="{{ route('blogs.index') }}" class="btn btn-outline-primary">
+                <a href="{{ route('clients.index') }}" class="btn btn-outline-primary">
                     {{ $locale==='fa' ? 'بازگشت به مقالات' : 'Back to articles' }}
                 </a>
             </div>
