@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -34,10 +35,24 @@ class BlogController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
-        
+        $locale = app()->getLocale();
+
+        // پست را با دسته‌ها و نویسنده بگیر (بر اساس slug)
+        $blog = Blog::with(['categories', 'author'])
+            ->where('slug', $slug)
+            ->firstOrFail();
+
+        // انتخاب ویو بر اساس زبان
+        if ($locale === 'fa') {
+            return view('client.FA.blog.show', compact('blog', 'locale'));
+        } else {
+            return view('client.EN.blog.show', compact('blog', 'locale'));
+        }
     }
+
+
 
     /**
      * Show the form for editing the specified resource.

@@ -1,4 +1,4 @@
-@extends('client.layout.master')
+@extends('client.Fa.layout.master')
 
 @section('content')
     @php
