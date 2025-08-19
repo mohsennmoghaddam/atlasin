@@ -4,7 +4,7 @@
     <div class="container mt-5" style="direction: rtl">
         <h4>دسته‌بندی‌های وبلاگ</h4>
 
-        <a href="{{ route('blogs-categories.create') }}" class="btn btn-primary mb-3">افزودن دسته‌بندی جدید</a>
+        <a href="{{ route('blogs-category.create') }}" class="btn btn-primary mb-3">افزودن دسته‌بندی جدید</a>
 
         @if(session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
@@ -26,8 +26,8 @@
                     <td>{{ $cat->name['en'] ?? '' }}</td>
                     <td>{{ $cat->slug }}</td>
                     <td>
-                        <a href="{{ route('blogs-categories.edit', $cat->id) }}" class="btn btn-sm btn-warning">ویرایش</a>
-                        <form action="{{ route('blogs-categories.destroy', $cat->id) }}" method="POST" style="display:inline-block;">
+                        <a href="{{ route('blogs-category.edit', $cat->id) }}" class="btn btn-sm btn-warning">ویرایش</a>
+                        <form action="{{ route('blogs-category.destroy', $cat->id) }}" method="POST" style="display:inline-block;">
                             @csrf @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('حذف شود؟')">حذف</button>
                         </form>

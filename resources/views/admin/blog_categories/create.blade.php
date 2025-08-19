@@ -4,7 +4,7 @@
     <div class="container mt-5" style="direction: rtl">
         <h4>افزودن دسته‌بندی جدید</h4>
 
-        <form action="{{ route('blogs-categories.store') }}" method="POST">
+        <form action="{{ route('blogs-category.store') }}" method="POST">
             @csrf
 
             <div class="form-group mb-3">

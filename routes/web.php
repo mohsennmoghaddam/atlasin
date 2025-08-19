@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\client\ContactUsController;
 use App\Http\Controllers\Client\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -36,9 +37,7 @@ Route::get('lang/{locale}', function ($locale) {
 
     Route::get('/hospital/category/{slug}', [\App\Http\Controllers\Client\HospitalController::class, 'category'])->name('hospital.category');
 
-
-
-
+    Route::get('/blogs/{slug}', [\App\Http\Controllers\client\BlogController::class, 'show'])->name('blogs.show');
 
 
 

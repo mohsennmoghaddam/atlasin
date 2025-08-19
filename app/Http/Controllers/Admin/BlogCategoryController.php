@@ -45,7 +45,7 @@ class BlogCategoryController extends Controller
             'slug' => $slug,
         ]);
 
-        return redirect()->route('blog-category.index')->with('success', 'دسته‌بندی با موفقیت ایجاد شد.');
+        return redirect()->route(' blogs-category.index')->with('success', 'دسته‌بندی با موفقیت ایجاد شد.');
     }
 
 

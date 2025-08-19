@@ -202,145 +202,177 @@
     </div>
     <!-- Features End -->
 
-    <!-- blogs Start -->
-    <div class="container-xxl py-5" style="direction: ltr; !important;">
+    {{-- ===== BLOGS SECTION (drop-in) ===== --}}
+    @php
+        $locale = app()->getLocale();
+        $tr = function($value) use ($locale) {
+            return is_array($value) ? ($value[$locale] ?? ($value['fa'] ?? ($value['en'] ?? ''))) : $value;
+        };
+    @endphp
+
+    <style>
+        .blog-item{transition:.3s ease; border-radius:12px;}
+        .blog-item:hover{transform:translateY(-6px); box-shadow:0 10px 25px rgba(0,0,0,.08);}
+        .blog-item img{transition:transform .35s ease;}
+        .blog-item:hover img{transform:scale(1.04);}
+        .badge-soft-primary{background:rgba(13,110,253,.12); color:#0d6efd;}
+    </style>
+
+    <div class="container-xxl py-5" id="blogs-section">
         <div class="container">
-            <div class="text-center mx-auto" style="max-width: 500px">
-                <h1 class="display-6 mb-5">
-                    We Provide professional Insurance Services
-                </h1>
+
+            {{-- عنوان --}}
+            <div class="text-center mx-auto mb-4" style="max-width: 520px">
+                <h1 class="display-6 mb-3">{{ $locale=='fa' ? 'آخرین مقالات' : 'Latest Articles' }}</h1>
+                <p class="text-muted">{{ $locale=='fa' ? 'اخبار و مطالب تخصصی حوزه محصولات ما' : 'News & insights about our products' }}</p>
             </div>
-            <div class="row g-4 justify-content-center">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item rounded h-100 p-5">
-                        <div class="d-flex align-items-center ms-n5 mb-4">
-                            <div
-                                class="service-icon flex-shrink-0 bg-primary rounded-end me-4"
-                            >
-                                <img
-                                    class="img-fluid"
-                                    src="client/img/icon/icon-10-light.png"
-                                    alt=""
-                                />
+
+            {{-- فیلتر کتگوری --}}
+            <div class="text-center mb-4">
+                <form id="blogFilterForm" class="d-inline-flex" action="{{ url()->current() }}" method="GET">
+                    <select name="category" id="categorySelect" class="form-select">
+                        <option value="">{{ $locale=='fa' ? 'همه دسته‌ها' : 'All Categories' }}</option>
+                        @foreach($categories as $cat)
+                            <option value="{{ $cat->slug }}" {{ request('category')==$cat->slug?'selected':'' }}>
+                                {{ $tr($cat->name) }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <button class="btn btn-primary ms-2" type="submit">
+                        {{ $locale=='fa' ? 'اعمال' : 'Apply' }}
+                    </button>
+                    @if(request('category'))
+                        <a href="{{ url()->current() }}" class="btn btn-outline-secondary ms-2" id="clearFilterBtn">
+                            {{ $locale=='fa' ? 'حذف فیلتر' : 'Clear' }}
+                        </a>
+                    @endif
+                </form>
+            </div>
+
+            {{-- گرید کارت‌ها --}}
+            <div id="blog-grid">
+                <div class="row g-4 justify-content-center">
+                    @forelse($blogs as $i => $blog)
+                        @php
+                            $title = $tr($blog->title);
+                            $short = $tr($blog->short_description);
+                            $img   = $blog->image ? asset('storage/'.$blog->image) : asset('client/img/icon/icon-01-light.png');
+                            $delay = number_format(0.1 + 0.2*($i % 3), 1);
+                        @endphp
+
+                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="{{ $delay }}s">
+                            <div class="service-item rounded h-100 p-4 text-center shadow-sm blog-item">
+                                <a href="{{ route('clients.blogs.show', $blog->slug) }}">
+                                    <img src="{{ $img }}" alt="{{ strip_tags($title) }}" class="img-fluid rounded mb-3" style="height:150px;object-fit:cover;">
+                                </a>
+
+                                <div class="mb-2">
+                                    @foreach($blog->categories as $c)
+                                        <span class="badge badge-soft-primary me-1">{{ $tr($c->name) }}</span>
+                                    @endforeach
+                                </div>
+
+                                <h5 class="mb-2">
+                                    <a href="{{ route('clients.blogs.show', $blog->slug) }}" class="text-dark text-decoration-none">
+                                        {{ \Illuminate\Support\Str::limit(strip_tags($title), 60) }}
+                                    </a>
+                                </h5>
+
+                                <p class="text-muted mb-3">
+                                    {{ \Illuminate\Support\Str::limit(strip_tags($short), 90) }}
+                                </p>
+
+                                <a href="{{ route('clients.blogs.show', $blog->slug) }}" class="btn btn-outline-primary btn-sm">
+                                    {{ $locale=='fa' ? 'ادامه مطلب' : 'Read More' }}
+                                </a>
                             </div>
-                            <h4 class="mb-0">Life Insurance</h4>
                         </div>
-                        <p class="mb-4">
-                            Aliqu diam amet eos erat ipsum et lorem et sit, sed stet lorem
-                            sit clita duo justo erat amet
-                        </p>
-                        <a class="btn btn-light px-3" href="">Read More</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item rounded h-100 p-5">
-                        <div class="d-flex align-items-center ms-n5 mb-4">
-                            <div
-                                class="service-icon flex-shrink-0 bg-primary rounded-end me-4"
-                            >
-                                <img
-                                    class="img-fluid"
-                                    src="client/img/icon/icon-01-light.png"
-                                    alt=""
-                                />
+                    @empty
+                        <div class="col-12">
+                            <div class="alert alert-light text-center border">
+                                {{ $locale=='fa' ? 'مقاله‌ای یافت نشد.' : 'No articles found.' }}
                             </div>
-                            <h4 class="mb-0">Health Insurance</h4>
                         </div>
-                        <p class="mb-4">
-                            Aliqu diam amet eos erat ipsum et lorem et sit, sed stet lorem
-                            sit clita duo justo erat amet
-                        </p>
-                        <a class="btn btn-light px-3" href="">Read More</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item rounded h-100 p-5">
-                        <div class="d-flex align-items-center ms-n5 mb-4">
-                            <div
-                                class="service-icon flex-shrink-0 bg-primary rounded-end me-4"
-                            >
-                                <img
-                                    class="img-fluid"
-                                    src="client/img/icon/icon-05-light.png"
-                                    alt=""
-                                />
-                            </div>
-                            <h4 class="mb-0">Home Insurance</h4>
-                        </div>
-                        <p class="mb-4">
-                            Aliqu diam amet eos erat ipsum et lorem et sit, sed stet lorem
-                            sit clita duo justo erat amet
-                        </p>
-                        <a class="btn btn-light px-3" href="">Read More</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item rounded h-100 p-5">
-                        <div class="d-flex align-items-center ms-n5 mb-4">
-                            <div
-                                class="service-icon flex-shrink-0 bg-primary rounded-end me-4"
-                            >
-                                <img
-                                    class="img-fluid"
-                                    src="client/img/icon/icon-08-light.png"
-                                    alt=""
-                                />
-                            </div>
-                            <h4 class="mb-0">Vehicle Insurance</h4>
-                        </div>
-                        <p class="mb-4">
-                            Aliqu diam amet eos erat ipsum et lorem et sit, sed stet lorem
-                            sit clita duo justo erat amet
-                        </p>
-                        <a class="btn btn-light px-3" href="">Read More</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item rounded h-100 p-5">
-                        <div class="d-flex align-items-center ms-n5 mb-4">
-                            <div
-                                class="service-icon flex-shrink-0 bg-primary rounded-end me-4"
-                            >
-                                <img
-                                    class="img-fluid"
-                                    src="client/img/icon/icon-07-light.png"
-                                    alt=""
-                                />
-                            </div>
-                            <h4 class="mb-0">Business Insurance</h4>
-                        </div>
-                        <p class="mb-4">
-                            Aliqu diam amet eos erat ipsum et lorem et sit, sed stet lorem
-                            sit clita duo justo erat amet
-                        </p>
-                        <a class="btn btn-light px-3" href="">Read More</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item rounded h-100 p-5">
-                        <div class="d-flex align-items-center ms-n5 mb-4">
-                            <div
-                                class="service-icon flex-shrink-0 bg-primary rounded-end me-4"
-                            >
-                                <img
-                                    class="img-fluid"
-                                    src="client/img/icon/icon-06-light.png"
-                                    alt=""
-                                />
-                            </div>
-                            <h4 class="mb-0">Property Insurance</h4>
-                        </div>
-                        <p class="mb-4">
-                            Aliqu diam amet eos erat ipsum et lorem et sit, sed stet lorem
-                            sit clita duo justo erat amet
-                        </p>
-                        <a class="btn btn-light px-3" href="">Read More</a>
-                    </div>
+                    @endforelse
                 </div>
             </div>
+
+            {{-- صفحه‌بندی --}}
+            <div id="blog-pager" class="mt-5 d-flex justify-content-center">
+                {{ $blogs->links() }}
+            </div>
+
         </div>
     </div>
-    <!-- blogs End -->
+
+    {{-- AJAX (بدون نیاز به ویوی اضافه)  --}}
+    <script>
+        (function() {
+            const container   = document.getElementById('blogs-section');
+            const form        = document.getElementById('blogFilterForm');
+            const categorySel = document.getElementById('categorySelect');
+            const grid        = document.getElementById('blog-grid');
+            const pager       = document.getElementById('blog-pager');
+
+            function ajaxLoad(url) {
+                const u = new URL(url, window.location.origin);
+                // همین صفحه را با X-Requested-With بار می‌زنیم، بعد بخش وبلاگ را از HTML پاسخ می‌کشیم
+                fetch(u, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+                    .then(r => r.text())
+                    .then(html => {
+                        // یک DOM موقتی بسازیم
+                        const tmp = document.createElement('div');
+                        tmp.innerHTML = html;
+
+                        // از پاسخ، گرید و پیجرِ جدید را پیدا کن (با همین id ها)
+                        const newGrid  = tmp.querySelector('#blog-grid');
+                        const newPager = tmp.querySelector('#blog-pager');
+
+                        if (newGrid && newPager) {
+                            grid.innerHTML  = newGrid.innerHTML;
+                            pager.innerHTML = newPager.innerHTML;
+                            window.history.replaceState({}, '', u); // URL را آپدیت کن
+                            attachPagerHandlers();
+                        }
+                    })
+                    .catch(console.error);
+            }
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const params = new URLSearchParams(new FormData(form));
+                const url = form.getAttribute('action') + (params.toString() ? '?' + params.toString() : '');
+                ajaxLoad(url);
+            });
+
+            // تغییر سلکت هم بلافاصله اعمال شود
+            categorySel.addEventListener('change', () => form.requestSubmit());
+
+            // هندل کلیک روی لینک‌های صفحه‌بندی
+            function attachPagerHandlers() {
+                pager.querySelectorAll('a').forEach(a => {
+                    a.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const url = this.getAttribute('href');
+                        if (url) ajaxLoad(url);
+                    });
+                });
+            }
+            attachPagerHandlers();
+
+            // دکمه Clear (اگر رندر شده باشد)
+            container.addEventListener('click', function(e) {
+                const clearBtn = e.target.closest('#clearFilterBtn');
+                if (clearBtn) {
+                    e.preventDefault();
+                    ajaxLoad(form.getAttribute('action')); // بدون فیلتر
+                    if (categorySel) categorySel.value = '';
+                }
+            });
+        })();
+    </script>
+    {{-- ===== /BLOGS SECTION ===== --}}
+
 
     <!-- Appointment Start -->
     @php $locale = app()->getLocale(); @endphp
