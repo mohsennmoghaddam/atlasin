@@ -166,13 +166,13 @@
                                         <div data-i18n="Account">جدول بنر ها </div>
                                     </a>
                                 </li>
-                                <li class="menu-item">
-                                    <a href="{{route('slider.create')}}" class="menu-link">
-                                        <div data-i18n="Notifications">ایجادبنر جدید</div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+{{--                                <li class="menu-item">--}}
+{{--                                    <a href="{{route('slider.create')}}" class="menu-link">--}}
+{{--                                        <div data-i18n="Notifications">ایجادبنر جدید</div>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                            </ul>--}}
+{{--                        </li>--}}
 {{--                        <li class="menu-item">--}}
 {{--                            <a href="javascript:void(0);" class="menu-link menu-toggle">--}}
 {{--                                <i class="menu-icon tf-icons bx bx-category"></i>--}}
@@ -243,7 +243,6 @@
                                 </li>
                             </ul>
                         </li>
-
                         <li class="menu-item">
                             <a href="javascript:void(0);" class="menu-link menu-toggle">
                                 <i class="menu-icon tf-icons bx bxs-category"></i>
@@ -296,33 +295,17 @@
                             <ul class="menu-sub">
                                 <li class="menu-item">
                                     <a href="{{route('about.index')}}" class="menu-link">
-                                        <div data-i18n="">لیست درباره ی ما </div>
+                                        <div data-i18n="">در باره ی ما صفحه ی اصلی </div>
                                     </a>
                                 </li>
-                                <li class="menu-item">
-                                    <a href="{{route('about.create')}}" class="menu-link">
-                                        <div data-i18n="">ایجادخدمات ویژه جدید</div>
-                                    </a>
-                                </li>
+{{--                                <li class="menu-item">--}}
+{{--                                    <a href="{{route('about.create')}}" class="menu-link">--}}
+{{--                                        <div data-i18n="">ایجادخدمات ویژه جدید</div>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
                             </ul>
                         </li>
                     </ul>
-                    <ul class="menu-sub">
-                        <li class="menu-item">
-                            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                                <i class="menu-icon tf-icons bx bx-magnet"></i>
-                                <div data-i18n="">پیام های دریافتی</div>
-                            </a>
-                            <ul class="menu-sub">
-                                <li class="menu-item">
-                                    <a href="" class="menu-link">
-                                        <div data-i18n="">مشاهده ی پیام ها</div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
 
                 <li class="menu-header small text-uppercase">
                     <span class="menu-header-text">صفحات و یا خدمات</span>

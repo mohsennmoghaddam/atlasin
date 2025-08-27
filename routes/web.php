@@ -6,7 +6,9 @@ use App\Http\Controllers\Client\HomeController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('lang/{locale}', function ($locale) {
+
+
+    Route::get('lang/{locale}', function ($locale) {
     if (!in_array($locale, ['fa', 'en'])) {
         abort(400);
     }
@@ -14,7 +16,7 @@ Route::get('lang/{locale}', function ($locale) {
     session(['locale' => $locale]);
 
     return redirect()->back();
-})->name('language.switch');
+    })->name('language.switch');
 
     //client
     Route::middleware([\App\Http\Middleware\SetLocale::class])->prefix('/')->name('clients.')->group(function () {
@@ -43,7 +45,6 @@ Route::get('lang/{locale}', function ($locale) {
 
     });
 
-
     Route::get('/login', [\App\Http\Controllers\Admin\AuthController::class, 'showLoginForm'])->name('login.form');
 
     Route::post('/login/send-otp', [\App\Http\Controllers\Admin\AuthController::class, 'sendOtp'])->name('login.sendOtp');
@@ -61,7 +62,6 @@ Route::get('lang/{locale}', function ($locale) {
     Route::post('/login/password', [\App\Http\Controllers\Admin\AuthController::class, 'loginWithPassword'])->name('login.password');
 
     Route::get('/logout', [\App\Http\Controllers\Admin\AuthController::class, 'logout'])->name('logout');
-
 
 
 // admin
