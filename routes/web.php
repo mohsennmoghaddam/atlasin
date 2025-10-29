@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BlogController;
-use App\Http\Controllers\client\ContactUsController;
+use App\Http\Controllers\Client\ContactUsController;
 use App\Http\Controllers\Client\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
     return redirect()->back();
     })->name('language.switch');
 
-    //client
+    //Client
     Route::middleware([\App\Http\Middleware\SetLocale::class])->prefix('/')->name('clients.')->group(function () {
 
     Route::get('/', [HomeController::class, 'index'])->name('index');
@@ -27,11 +27,11 @@ use Illuminate\Support\Facades\Route;
 
     Route::post('/contact', [ContactUsController::class, 'store'])->name('contact.store');
 
-    Route::get('/aboutUs', [\App\Http\Controllers\client\AboutController::class, 'index'])->name('aboutUs');
+    Route::get('/aboutUs', [\App\Http\Controllers\Client\AboutController::class, 'index'])->name('aboutUs');
 
-    Route::get('/ourService', [\App\Http\Controllers\client\OurServiceController::class, 'index'])->name('ourService');
+    Route::get('/ourService', [\App\Http\Controllers\Client\OurServiceController::class, 'index'])->name('ourService');
 
-    Route::get('/ContactUS', [\App\Http\Controllers\client\ContactUsController::class, 'index'])->name('ContactUS');
+    Route::get('/ContactUS', [\App\Http\Controllers\Client\ContactUsController::class, 'index'])->name('ContactUS');
 
     Route::get('/homecare', [\App\Http\Controllers\Client\HomecareController::class, 'index'])->name('homecare');
 
@@ -39,8 +39,11 @@ use Illuminate\Support\Facades\Route;
 
     Route::get('/hospital/category/{slug}', [\App\Http\Controllers\Client\HospitalController::class, 'category'])->name('hospital.category');
 
-    Route::get('/blogs/{slug}', [\App\Http\Controllers\client\BlogController::class, 'show'])->name('blogs.show');
+    Route::get('/blogs/{slug}', [\App\Http\Controllers\Client\BlogController::class, 'show'])->name('blogs.show');
 
+        Route::get('/gallery_items', [\App\Http\Controllers\Client\GalleryCategoryController::class, 'index'])->name('gallery_items.index')
+        ;
+        Route::get('/category/{slug}', [\App\Http\Controllers\Client\GalleryCategoryController::class, 'category'])->name('gallery_items.category');
 
 
     });
@@ -64,7 +67,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/logout', [\App\Http\Controllers\Admin\AuthController::class, 'logout'])->name('logout');
 
 
-// admin
+// Admin
     Route::prefix('AtlassianPanelCo')
 
         ->middleware([
@@ -75,7 +78,7 @@ use Illuminate\Support\Facades\Route;
         ])
         ->group(function () {
 
-            Route::get('/',[\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin.index');
+            Route::get('/',[\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('Admin.index');
 
             Route::resource('slider',\App\Http\Controllers\Admin\SliderController::class);
 
@@ -84,6 +87,10 @@ use Illuminate\Support\Facades\Route;
             Route::resource('contact-services', \App\Http\Controllers\Admin\ContactServiceController::class);
 
             Route::resource('contact' ,  \App\Http\Controllers\Admin\ContactUsController::class);
+            // routes/web.php
+            Route::patch('/Admin/contacts/{contact}/answered', [ContactUsController::class, 'markAnswered'])
+                ->name('contact.answered');
+
 
             Route::resource('team-members', \App\Http\Controllers\Admin\TeamMemberController::class);
 
@@ -94,27 +101,38 @@ use Illuminate\Support\Facades\Route;
             Route::put('why-uses/{whyUse}', [\App\Http\Controllers\Admin\WhyUsController::class, 'update'])->name('why-uses.update');
             Route::delete('why-uses/{whyUse}', [\App\Http\Controllers\Admin\WhyUsController::class, 'destroy'])->name('why-uses.destroy');
 
-            Route::resource('role',\App\Http\Controllers\Admin\RoleController::class);
-            Route::get('role/{role}/permission', [\App\Http\Controllers\Admin\RoleController::class, 'editPermissions'])->name('role.permission.edit');
-            Route::put('role/{role}/permission', [\App\Http\Controllers\Admin\RoleController::class, 'updatePermissions'])->name('role.permission.update');
-            Route::resource('permission', \App\Http\Controllers\Admin\PermissionController::class)->names([
-                'index' => 'permission.index',
-                'create' => 'permission.create',
-                'store' => 'permission.store',
-                'edit' => 'permission.edit',
-                'update' => 'permission.update',
-                'destroy' => 'permission.destroy',
-            ]);
 
-            Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
+            Route::middleware([\App\Http\Middleware\RealAdminMiddleware::class. ':Real-Admin' ])->group(function () {
+                Route::resource('role', \App\Http\Controllers\Admin\RoleController::class);
+                Route::get('role/{role}/permission', [\App\Http\Controllers\Admin\RoleController::class, 'editPermissions'])->name('role.permission.edit');
+                Route::put('role/{role}/permission', [\App\Http\Controllers\Admin\RoleController::class, 'updatePermissions'])->name('role.permission.update');
 
-            Route::resource('/admin/testimonials', \App\Http\Controllers\Admin\TestimonialController::class);
-            Route::resource('/admin/hospitals', \App\Http\Controllers\Admin\HospitalController::class);
-            Route::resource('/admin/partners', \App\Http\Controllers\Admin\PartnerImageController::class);
+                Route::resource('permission', \App\Http\Controllers\Admin\PermissionController::class)->names([
+                    'index' => 'permission.index',
+                    'create' => 'permission.create',
+                    'store' => 'permission.store',
+                    'edit' => 'permission.edit',
+                    'update' => 'permission.update',
+                    'destroy' => 'permission.destroy',
+                ]);
+            });
+
+            Route::middleware([\App\Http\Middleware\RealAdminMiddleware::class . ':Real-Admin,Admin'])->group(function () {
+
+                Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
+
+            });
+
+            Route::resource('/Admin/testimonials', \App\Http\Controllers\Admin\TestimonialController::class);
+            Route::resource('/Admin/hospitals', \App\Http\Controllers\Admin\HospitalController::class);
+            Route::resource('/Admin/partners', \App\Http\Controllers\Admin\PartnerImageController::class);
 
 
             Route::resource('blogs', \App\Http\Controllers\Admin\BlogController::class);
             Route::resource('blogs-category', \App\Http\Controllers\Admin\BlogCategoryController::class);
+
+
+            Route::middleware([\App\Http\Middleware\RealAdminMiddleware::class . ':Real-Admin,manager-home,Admin,home-user'])->group(function () {
 
             Route::resource('homecare', \App\Http\Controllers\Admin\HomecareSectionController::class);
             Route::resource('homecare-sliders', \App\Http\Controllers\Admin\HomecareSliderController::class);
@@ -124,8 +142,12 @@ use Illuminate\Support\Facades\Route;
             Route::resource('homecare-mask-category', \App\Http\Controllers\Admin\HomecareMaskCategoryController::class);
             Route::delete('homecare-mask-items/{item}', [\App\Http\Controllers\Admin\HomecareMaskCategoryController::class, 'destroyItem'])
                 ->name('homecare-mask-items.destroy');
+            });
 
             // routes/web.php  (داخل گروه ادمین خودت)
+
+            Route::middleware([\App\Http\Middleware\RealAdminMiddleware::class . ':Real-Admin,Admin,manager-hospital,hospital-user'])->group(function () {
+
             Route::resource('hospital-texts', \App\Http\Controllers\Admin\HospitalTextSectionController::class);
 
             Route::resource('hospital-category', \App\Http\Controllers\Admin\HospitalCategoryController::class);
@@ -138,10 +160,13 @@ use Illuminate\Support\Facades\Route;
 
             Route::resource('hospital-catalogs', \App\Http\Controllers\Admin\HospitalCategoryCatalogController::class);
 
-            Route::resource('hospital-gallery', \App\Http\Controllers\Admin\HospitalCategoryImageController::class);
-
+            Route::resource('hospital-gallery_items', \App\Http\Controllers\Admin\HospitalCategoryImageController::class);
+            });
             Route::resource('faqs', \App\Http\Controllers\Admin\FaqController::class);
 
+            Route::resource('gallery-categories', \App\Http\Controllers\Admin\GalleryCategoryController::class);
+
+            Route::resource('gallery_items', \App\Http\Controllers\Admin\GalleryItemController::class);
 
         });
 

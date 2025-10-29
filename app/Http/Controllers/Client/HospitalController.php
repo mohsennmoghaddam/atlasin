@@ -26,7 +26,12 @@ class HospitalController extends Controller
         $textSections = HospitalTextSection::orderBy('order', 'asc')->get();
         $categories = HospitalCategory::orderBy('order')->get();
         // ارسال به ویوی مناسب زبان + پاس‌دادن locale
-        return view("client.$locale.product.hospital.index", compact('textSections','locale' ,'categories'));
+//        return view("Client.$locale.product.hospital.index", compact('textSections','locale' ,'categories'));
+        if ($locale === 'fa') {
+            return view('Client.FA.product.hospital.index', compact('textSections','locale' ,'categories'));
+        } else {
+            return view('Client.EN.product.hospital.index', compact('textSections','locale' ,'categories'));
+        }
     }
 
     public function category($slug)
@@ -60,9 +65,9 @@ class HospitalController extends Controller
             ->get();
 
         if ($locale === 'fa') {
-            return view('client.FA.product.hospital.show', compact('category' , 'schematic' , 'locale' ,'summary' , 'stages' , 'catalogs' , 'gallery'));
+            return view('Client.FA.product.hospital.show', compact('category' , 'schematic' , 'locale' ,'summary' , 'stages' , 'catalogs' , 'gallery'));
         } else {
-            return view('client.EN.product.hospital.show', compact('category' , 'schematic' , 'locale'  ,'summary'  , 'stages', 'catalogs'  , 'gallery'));
+            return view('Client.EN.product.hospital.show', compact('category' , 'schematic' , 'locale'  ,'summary'  , 'stages', 'catalogs'  , 'gallery'));
         }
 
     }

@@ -16,7 +16,7 @@ class HomecareProductFeatureController extends Controller
 
     public function create()
     {
-        return view('admin.product.homecare.feature.create');
+        return view('Admin.product.homecare.feature.create');
     }
 
     public function store(Request $request)
@@ -28,7 +28,7 @@ class HomecareProductFeatureController extends Controller
             'intro'             => 'required|array',
             'intro.fa'          => 'required|string',
             'intro.en'          => 'required|string',
-            'image'             => 'required|image|mimes:jpg,jpeg,png,webp|max:4096',
+            'image'             => 'required|image|mimes:jpg,jpeg,png,',
             'model_title'       => 'required|array',
             'model_title.fa'    => 'required|string|max:255',
             'model_title.en'    => 'required|string|max:255',
@@ -59,7 +59,7 @@ class HomecareProductFeatureController extends Controller
 
     public function edit(HomecareProductFeature $homecare_feature)
     {
-        return view('admin.product.homecare.feature.edit', compact('homecare_feature'));
+        return view('Admin.product.homecare.feature.edit', compact('homecare_feature'));
     }
 
     public function update(Request $request, HomecareProductFeature $homecare_feature)

@@ -38,7 +38,7 @@ class HomecareController extends Controller
 
         // نمایش ویو بر اساس زبان
         if ($locale === 'fa') {
-            return view('client.FA.product.homecare.index', [
+            return view('Client.FA.product.homecare.index', [
                 'title'   => $intro->title['fa'] ?? '',
                 'body'    => $intro->body['fa'] ?? '',
                 'sliders' => $sliders,
@@ -49,7 +49,7 @@ class HomecareController extends Controller
                 'maskCategories'  => $maskCategories,
             ]);
         } else {
-            return view('client.EN.product.homecare.index', [
+            return view('Client.EN.product.homecare.index', [
                 'title'   => $intro->title['en'] ?? '',
                 'body'    => $intro->body['en'] ?? '',
                 'sliders' => $sliders,

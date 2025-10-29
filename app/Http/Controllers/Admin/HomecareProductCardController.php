@@ -16,7 +16,7 @@ class HomecareProductCardController extends Controller
 
     public function create()
     {
-        return view('admin.product.homecare.card.create');
+        return view('Admin.product.homecare.card.create');
     }
 
     public function store(Request $request)
@@ -49,7 +49,7 @@ class HomecareProductCardController extends Controller
 
     public function edit(HomecareProductCard $homecare_card)
     {
-        return view('admin.product.homecare.card.edit', compact('homecare_card'));
+        return view('Admin.product.homecare.card.edit', compact('homecare_card'));
     }
 
     public function update(Request $request, HomecareProductCard $homecare_card)

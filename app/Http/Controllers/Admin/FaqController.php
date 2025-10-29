@@ -12,13 +12,13 @@ class FaqController extends Controller
     public function index()
     {
         $faqs = Faq::with('category')->orderBy('order')->get();
-        return view('admin.faq.index', compact('faqs'));
+        return view('Admin.faq.index', compact('faqs'));
     }
 
     public function create()
     {
         $categories = HospitalCategory::orderBy('order')->get();
-        return view('admin.faq.create', compact('categories'));
+        return view('Admin.faq.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -47,7 +47,7 @@ class FaqController extends Controller
     public function edit(Faq $faq)
     {
         $categories = HospitalCategory::orderBy('order')->get();
-        return view('admin.faq.edit', ['item'=>$faq, 'categories'=>$categories]);
+        return view('Admin.faq.edit', ['item'=>$faq, 'categories'=>$categories]);
     }
 
     public function update(Request $request, Faq $faq)

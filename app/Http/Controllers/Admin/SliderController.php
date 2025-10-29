@@ -15,7 +15,7 @@ class SliderController extends Controller
     {
         $sliders = Slider::all();
 
-        return view('admin.slider.index',compact('sliders'));
+        return view('Admin.slider.index',compact('sliders'));
     }
 
     /**
@@ -23,34 +23,73 @@ class SliderController extends Controller
      */
     public function create()
     {
-        return view('admin.slider.create');
+        return view('Admin.slider.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
+//    public function store(Request $request)
+//    {
+//        $slider = new Slider();
+//
+//        $slider->setTranslation('title', 'en', $request->title_en);
+//        $slider->setTranslation('title', 'fa', $request->title_fa);
+//
+//        $slider->setTranslation('description', 'en', $request->description_en);
+//        $slider->setTranslation('description', 'fa', $request->description_fa);
+//
+//
+//        // ذخیره تصویر (مثال ساده)
+//        if ($request->hasFile('image')) {
+//            $path = $request->file('image')->store('sliders', 'public');
+//            $slider->image = $path;
+//        }
+//
+//        $slider->order = $request->order ?? 0;
+//
+//        $slider->save();
+//
+//        return redirect()->route('slider.index')->with('success',trans('اسلایدر با موفقیت ایجا شد'));
+//    }
     public function store(Request $request)
     {
-        $slider = new Slider();
+        $data = $request->validate([
+            'title_fa' => 'nullable|string',
+            'title_en' => 'nullable|string',
+            'description_fa' => 'nullable|string',
+            'description_en' => 'nullable|string',
+            'order' => 'nullable|integer',
+            'image_fa' => 'nullable|image|mimes:jpg,jpeg,png',
+            'image_en' => 'nullable|image|mimes:jpg,jpeg,png',
+        ]);
 
-        $slider->setTranslation('title', 'en', $request->title_en);
-        $slider->setTranslation('title', 'fa', $request->title_fa);
-
-        $slider->setTranslation('description', 'en', $request->description_en);
-        $slider->setTranslation('description', 'fa', $request->description_fa);
-
-
-        // ذخیره تصویر (مثال ساده)
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('sliders', 'public');
-            $slider->image = $path;
+        // آپلود تصویر فارسی
+        if ($request->hasFile('image_fa')) {
+            $data['image_fa'] = $request->file('image_fa')->store('sliders', 'public');
         }
 
-        $slider->order = $request->order ?? 0;
+        // آپلود تصویر انگلیسی
+        if ($request->hasFile('image_en')) {
+            $data['image_en'] = $request->file('image_en')->store('sliders', 'public');
+        }
 
+        // ذخیره عنوان‌ها به صورت JSON
+        $slider = new Slider();
+        $slider->setTranslations('title', [
+            'fa' => $data['title_fa'] ?? '',
+            'en' => $data['title_en'] ?? '',
+        ]);
+        $slider->setTranslations('description', [
+            'fa' => $data['description_fa'] ?? '',
+            'en' => $data['description_en'] ?? '',
+        ]);
+        $slider->order = $data['order'] ?? 0;
+        $slider->image_fa = $data['image_fa'] ?? null;
+        $slider->image_en = $data['image_en'] ?? null;
         $slider->save();
 
-        return redirect()->route('slider.index')->with('success',trans('اسلایدر با موفقیت ایجا شد'));
+        return redirect()->route('slider.index')->with('success', 'اسلایدر ایجاد شد.');
     }
 
     /**
@@ -66,7 +105,7 @@ class SliderController extends Controller
      */
     public function edit(Slider $slider)
     {
-        return  view('admin.slider.edit',['slider'=>$slider]);
+        return  view('Admin.slider.edit',['slider'=>$slider]);
     }
 
     /**

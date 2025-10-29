@@ -22,7 +22,7 @@ class HomecareSliderController extends Controller
      */
     public function create()
     {
-        return view('admin.product.homecare.slider.create');
+        return view('Admin.product.homecare.slider.create');
     }
 
     /**
@@ -48,7 +48,7 @@ class HomecareSliderController extends Controller
 
     public function edit(HomecareSlider $homecare_slider)
     {
-        return view('admin.product.homecare.slider.edit', compact('homecare_slider'));
+        return view('Admin.product.homecare.slider.edit', compact('homecare_slider'));
     }
 
     public function update(Request $request, HomecareSlider $homecare_slider)

@@ -13,7 +13,7 @@ class ContactUsController extends Controller
      */
     public function index()
     {
-        return view('admin.contact.index',[
+        return view('Admin.contact.index',[
 
             'contacts' => ContactUs::all()
 
@@ -41,21 +41,23 @@ class ContactUsController extends Controller
      */
     public function show(ContactUs $contact)
     {
-
-
-
         if ($contact->status == 'new') {
             $contact->status = 'read';
             $contact->save();
         }
-
-
-
-        return view('admin.contact.show', [
+        return view('Admin.contact.show', [
 
             'contact' => $contact
         ]);
     }
+
+
+    public function markAnswered(ContactUs $contact)
+    {
+        $contact->update(['status' => 'answered']);
+        return response()->noContent(); // 204 سریع و بدون بدنه
+    }
+
 
 
     /**

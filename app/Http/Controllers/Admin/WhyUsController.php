@@ -13,12 +13,12 @@ class WhyUsController extends Controller
     public function index()
     {
         $whyUses = WhyUs::with('items')->latest()->get();
-        return view('admin.whyUs.index', compact('whyUses'));
+        return view('Admin.whyUs.index', compact('whyUses'));
     }
 
     public function create()
     {
-        return view('admin.whyUs.create');
+        return view('Admin.whyUs.create');
     }
 
     public function store(Request $request)
@@ -30,11 +30,11 @@ class WhyUsController extends Controller
             'description' => 'nullable|array',
             'description.fa' => 'nullable|string|max:1000',
             'description.en' => 'nullable|string|max:1000',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,svg,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,svg',
             'items' => 'nullable|array',
             'items.*.title' => 'nullable|array',
-            'items.*.title.fa' => 'nullable|string|max:255',
-            'items.*.title.en' => 'nullable|string|max:255',
+            'items.*.title.fa' => 'nullable|string',
+            'items.*.title.en' => 'nullable|string',
             'items.*.icon' => 'nullable|image|mimes:jpeg,png,jpg,svg,webp|max:1024',
         ]);
 
@@ -65,7 +65,7 @@ class WhyUsController extends Controller
     public function edit(WhyUs $whyUse)
     {
         $whyUse->load('items');
-        return view('admin.whyUs.edit', compact('whyUse'));
+        return view('Admin.whyUs.edit', compact('whyUse'));
     }
 
     public function update(Request $request, WhyUs $whyUse)
@@ -75,15 +75,15 @@ class WhyUsController extends Controller
             'title.fa' => 'required|string|max:255',
             'title.en' => 'required|string|max:255',
             'description' => 'nullable|array',
-            'description.fa' => 'nullable|string|max:1000',
-            'description.en' => 'nullable|string|max:1000',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,svg,webp|max:2048',
+            'description.fa' => 'nullable|string|max:2000',
+            'description.en' => 'nullable|string|max:2000',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,svg,webp',
             'items' => 'nullable|array',
             'items.*.id' => 'nullable|exists:why_us_items,id',
             'items.*.title' => 'nullable|array',
             'items.*.title.fa' => 'nullable|string|max:255',
             'items.*.title.en' => 'nullable|string|max:255',
-            'items.*.icon' => 'nullable|image|mimes:jpeg,png,jpg,svg,webp|max:1024',
+            'items.*.icon' => 'nullable|image|mimes:jpeg,png,jpg,svg,webp',
             'items_to_delete' => 'nullable|array',
             'items_to_delete.*' => 'integer|exists:why_us_items,id',
         ]);

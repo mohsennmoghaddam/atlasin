@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\about;
+use App\Models\About;
 use App\Models\AboutIcon;
 use Illuminate\Container\Attributes\Storage;
 use Illuminate\Http\Request;
@@ -15,9 +15,9 @@ class AboutController extends Controller
      */
     public function index()
     {
-        return view('admin.about.index' , [
+        return view('Admin.about.index' , [
 
-            'abouts' => about::all(),
+            'abouts' => About::all(),
         ]);
     }
 
@@ -26,7 +26,7 @@ class AboutController extends Controller
      */
     public function create()
     {
-        return view('admin.about.create');
+        return view('Admin.about.create');
     }
 
     /**
@@ -72,8 +72,11 @@ class AboutController extends Controller
 
     public function store(Request $request)
     {
+
+
+
         $request->validate([
-            'main_image' => 'required|image|max:2048',
+//            'main_image' => 'required|image|max:2048',
             'call_us_image' => 'nullable|image|max:2048',
             'title.fa' => 'required|string',
             'title.en' => 'required|string',
@@ -150,7 +153,7 @@ class AboutController extends Controller
     {
         $aboutUs = About::with('icons')->findOrFail($id);
 
-        return view('admin.about.show', compact('aboutUs'));
+        return view('Admin.about.show', compact('aboutUs'));
     }
 
 
@@ -159,7 +162,7 @@ class AboutController extends Controller
      */
     public function edit(about $about)
     {
-        return view('admin.about.edit', [
+        return view('Admin.about.edit', [
 
             'about' => $about,
         ]);

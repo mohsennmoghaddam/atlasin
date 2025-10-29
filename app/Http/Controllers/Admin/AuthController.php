@@ -15,7 +15,7 @@ class AuthController extends Controller
 {
     public function showLoginForm()
     {
-        return view('admin.auth.login');
+        return view('Admin.auth.login');
     }
 
 
@@ -34,8 +34,15 @@ class AuthController extends Controller
         }
 
 
-        if (!$user->roles()->whereIn('name', ['admin', 'Real-admin' , 'seler'])->exists()) {
-            return back()->withErrors(['identifier' => 'شما مجاز به ورود به پنل نیستید.']);
+//        if (!$user->roles()->whereIn('name', ['Admin', 'Real-Admin' , 'seler'])->exists()) {
+//            return back()->withErrors(['identifier' => 'شما مجاز به ورود به پنل نیستید.']);
+//        }
+
+        if ($user->roles()->whereIn('name', ['Real-Admin'])->exists()) {
+
+            Session::put('verified_user_id', $user->id);
+
+            return redirect()->route('login.passwordForm');
         }
 
         // ساخت OTP
@@ -60,16 +67,15 @@ class AuthController extends Controller
 
         $mobile=$user->mobile;
 
-        $text = '1';
+//        $text = '1';
 
-//        $melipayamk->OTPSMS($code , $mobile , $text);
+        $melipayamk->OTPPSMS($code,$mobile);
 
         // شبیه‌سازی ارسال OTP (فعلاً لاگ)
-        logger("OTP for {$user->mobile} is: $otp");
+//        logger("OTP for {$user->mobile} is: $otp");
 
         return redirect()->route('login.verifyForm')->with('success', 'کد یک‌بارمصرف برای شما ارسال شد.');
     }
-
 
     public function showVerifyForm()
     {
@@ -77,7 +83,7 @@ class AuthController extends Controller
             return redirect()->route('login.form')->withErrors(['identifier' => 'دسترسی غیرمجاز.']);
         }
 
-        return view('admin.auth.verify');
+        return view('Admin.auth.verify');
     }
 
 
@@ -122,7 +128,7 @@ class AuthController extends Controller
             return redirect()->route('login.form')->withErrors(['identifier' => 'لطفاً مجدداً وارد شوید.']);
         }
 
-        return view('admin.auth.password');
+        return view('Admin.auth.password');
     }
 
 
@@ -149,7 +155,7 @@ class AuthController extends Controller
         Session::forget('verified_user_id');
         Session::forget('auth_mobile');
 
-        return redirect()->route('admin.index'); // یا هر مسیری که داشبورد شماست
+        return redirect()->route('Admin.index'); // یا هر مسیری که داشبورد شماست
     }
 
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Permission;
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RoleController extends Controller
 {
@@ -14,7 +15,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        return view('admin.role.index' , ['roles' => Role::all()]);
+        return view('Admin.role.index' , ['roles' => Role::all()]);
     }
 
     /**
@@ -22,7 +23,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('admin.role.create');
+        return view('Admin.role.create');
     }
 
     /**
@@ -51,7 +52,7 @@ class RoleController extends Controller
         $permissions = Permission::all();
         $rolePermissions = $role->permissions->pluck('id')->toArray();
 
-        return view('admin.role.permissions', compact('role', 'permissions', 'rolePermissions'));
+        return view('Admin.role.permissions', compact('role', 'permissions', 'rolePermissions'));
     }
 
     public function updatePermissions(Request $request, Role $role)
@@ -96,6 +97,22 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        //
+        // (اختیاری) جلوگیری از حذف نقش اصلی
+        if ($role->name === 'Real-Admin') {
+            return back()->with('error', 'حذف نقش Real-Admin مجاز نیست.');
+        }
+
+        DB::transaction(function () use ($role) {
+            // قطع اتصال از همه‌ی پرمیشن‌ها
+            $role->permissions()->detach();
+
+            // قطع اتصال از همه‌ی کاربران
+            $role->users()->detach();
+
+            // حذف خود نقش
+            $role->delete();
+        });
+
+        return back()->with('success', 'نقش با موفقیت حذف شد.');
     }
 }

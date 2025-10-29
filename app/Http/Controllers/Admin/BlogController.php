@@ -12,20 +12,21 @@ use Illuminate\Support\Str;
 
 class BlogController extends Controller
 {
+
     public function index()
     {
         // در ادمین همه (draft/published) را ببین
         $blogs = Blog::latest()->paginate(10);
-        return view('admin.blogs.index', compact('blogs'));
+        return view('Admin.blogs.index', compact('blogs'));
     }
 
     public function create()
     {
         $categories = BlogCategory::all();
-        return view('admin.blogs.create', compact('categories'));
+        return view('Admin.blogs.create', compact('categories'));
     }
 
-    /** فقط کسی که blog-publish دارد یا real admin است، می‌تواند منتشر کند */
+    /** فقط کسی که blog-publish دارد یا real Admin است، می‌تواند منتشر کند */
     private function userCanPublish(): bool
     {
         $u = auth()->user();
@@ -37,8 +38,8 @@ class BlogController extends Controller
             $u->hasPermissionTo('blog-publish')
             // 2) یا اگر گفتی فقط blog-show دادی و همین کافی‌ست:
             || $u->hasPermissionTo('blog-show')
-            // 3) یا اگر نقشِ real admin داشتی و می‌خوای نقش کفایت کنه:
-            || $u->roles()->where('name', 'real admin')->exists();
+            // 3) یا اگر نقشِ real Admin داشتی و می‌خوای نقش کفایت کنه:
+            || $u->roles()->where('name', 'real Admin')->exists();
     }
 
 
@@ -102,7 +103,7 @@ class BlogController extends Controller
     public function edit(Blog $blog)
     {
         $categories = BlogCategory::all();
-        return view('admin.blogs.edit', compact('blog', 'categories'));
+        return view('Admin.blogs.edit', compact('blog', 'categories'));
     }
 
     public function update(Request $request, Blog $blog)

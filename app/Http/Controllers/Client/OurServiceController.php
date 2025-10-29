@@ -16,9 +16,9 @@ class OurServiceController extends Controller
 
         if ($locale === 'fa') {
 
-            return view('client.FA.ourService.index', compact( 'locale'));
+            return view('Client.FA.ourService.index', compact( 'locale'));
         } else {
-            return view('client.EN.ourService.index', compact( 'locale'));
+            return view('Client.EN.ourService.index', compact( 'locale'));
         }
     }
 

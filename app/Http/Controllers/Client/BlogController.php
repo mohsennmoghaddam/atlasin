@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\client;
+namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
-use App\Models\Blog;
 use Illuminate\Http\Request;
+use App\Models\Blog;
 
 class BlogController extends Controller
 {
@@ -46,9 +46,9 @@ class BlogController extends Controller
 
         // انتخاب ویو بر اساس زبان
         if ($locale === 'fa') {
-            return view('client.FA.blog.show', compact('blog', 'locale'));
+            return view('Client.FA.blog.show', compact('blog', 'locale'));
         } else {
-            return view('client.EN.blog.show', compact('blog', 'locale'));
+            return view('Client.EN.blog.show', compact('blog', 'locale'));
         }
     }
 

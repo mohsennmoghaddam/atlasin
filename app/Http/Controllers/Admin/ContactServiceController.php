@@ -14,7 +14,7 @@ class ContactServiceController extends Controller
     public function index()
     {
         $services = ContactService::latest()->get();
-        return view('admin.contactservice.index', compact('services'));
+        return view('Admin.contactservice.index', compact('services'));
     }
 
     /**
@@ -22,7 +22,7 @@ class ContactServiceController extends Controller
      */
     public function create()
     {
-        return view('admin.contactservice.create');
+        return view('Admin.contactservice.create');
     }
 
     /**
@@ -63,7 +63,7 @@ class ContactServiceController extends Controller
      */
     public function edit(ContactService $contactService)
     {
-        return view('admin.contactservice.edit',[
+        return view('Admin.contactservice.edit',[
 
             'ContactService' => $contactService
         ]);

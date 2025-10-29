@@ -18,7 +18,7 @@ class HospitalCategoryStageController extends Controller
     public function create()
     {
         $categories = HospitalCategory::orderBy('order')->get();
-        return view('admin.product.hospital.stage.create', compact('categories'));
+        return view('Admin.product.hospital.stage.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -54,7 +54,7 @@ class HospitalCategoryStageController extends Controller
     public function edit(HospitalCategoryStage $hospital_stage)
     {
         $categories = HospitalCategory::orderBy('order')->get();
-        return view('admin.product.hospital.stage.edit', [
+        return view('Admin.product.hospital.stage.edit', [
             'item' => $hospital_stage,
             'categories' => $categories
         ]);

@@ -23,13 +23,13 @@ class HospitalCategorySchematicController extends Controller
         $cataloge = HospitalCategoryCatalog::with('category')->orderBy('order')->get();
         $gallery = HospitalCategoryImage::with('category')->orderBy('order')->get();
 
-        return view('admin.product.hospital.schematic.index', compact('items' , 'summaries' , 'stage'  , 'cataloge' , 'gallery' ));
+        return view('Admin.product.hospital.schematic.index', compact('items' , 'summaries' , 'stage'  , 'cataloge' , 'gallery' ));
     }
 
     public function create()
     {
         $categories = HospitalCategory::orderBy('order')->get();
-        return view('admin.product.hospital.schematic.create', compact('categories'));
+        return view('Admin.product.hospital.schematic.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -56,7 +56,7 @@ class HospitalCategorySchematicController extends Controller
     public function edit(HospitalCategorySchematic $hospital_schematic)
     {
         $categories = HospitalCategory::orderBy('order')->get();
-        return view('admin.product.hospital.schematic.edit', [
+        return view('Admin.product.hospital.schematic.edit', [
             'item' => $hospital_schematic,
             'categories' => $categories
         ]);

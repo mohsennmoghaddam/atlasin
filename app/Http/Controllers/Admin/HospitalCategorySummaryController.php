@@ -11,13 +11,13 @@ class HospitalCategorySummaryController extends Controller
     public function index()
     {
         $summaries = HospitalCategorySummary::with('category')->orderBy('order')->get();
-        return view('admin.product.hospital.summary.index', compact('summaries'));
+        return view('Admin.product.hospital.summary.index', compact('summaries'));
     }
 
     public function create()
     {
         $categories = HospitalCategory::orderBy('order')->get();
-        return view('admin.product.hospital.summary.create', compact('categories'));
+        return view('Admin.product.hospital.summary.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -47,7 +47,7 @@ class HospitalCategorySummaryController extends Controller
     public function edit(HospitalCategorySummary $hospital_summary)
     {
         $categories = HospitalCategory::orderBy('order')->get();
-        return view('admin.product.hospital.summary.edit', [
+        return view('Admin.product.hospital.summary.edit', [
             'item' => $hospital_summary,
             'categories' => $categories
         ]);

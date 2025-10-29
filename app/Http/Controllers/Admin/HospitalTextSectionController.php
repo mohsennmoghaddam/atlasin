@@ -13,12 +13,12 @@ class HospitalTextSectionController extends Controller
     {
         $sections = HospitalTextSection::orderBy('order')->get();
         $categories = HospitalCategory::orderBy('order')->get();
-        return view('admin.product.hospital.home.index', compact('sections' , 'categories'));
+        return view('Admin.product.hospital.home.index', compact('sections' , 'categories'));
     }
 
     public function create()
     {
-        return view('admin.product.hospital.text.create');
+        return view('Admin.product.hospital.text.create');
     }
 
     public function store(Request $request)
@@ -38,7 +38,7 @@ class HospitalTextSectionController extends Controller
 
     public function edit(HospitalTextSection $hospital_text)
     {
-        return view('admin.product.hospital.text.edit', ['section' => $hospital_text]);
+        return view('Admin.product.hospital.text.edit', ['section' => $hospital_text]);
     }
 
     public function update(Request $request, HospitalTextSection $hospital_text)

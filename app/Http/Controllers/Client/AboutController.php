@@ -23,9 +23,9 @@ class AboutController extends Controller
 
         if ($locale === 'fa') {
 
-            return view('client.FA.about.index', compact('about' , 'members' , 'locale'));
+            return view('Client.FA.about.index', compact('about' , 'members' , 'locale'));
         } else {
-            return view('client.EN.about.index', compact('about' , 'members' , 'locale'));
+            return view('Client.EN.about.index', compact('about' , 'members' , 'locale'));
         }
 
     }

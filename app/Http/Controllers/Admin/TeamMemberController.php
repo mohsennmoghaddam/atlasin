@@ -15,7 +15,7 @@ class TeamMemberController extends Controller
     public function index()
     {
         $team_members = TeamMember::latest()->get();
-        return view('admin.team-members.index', compact('team_members'));
+        return view('Admin.team-members.index', compact('team_members'));
     }
 
     /**
@@ -23,7 +23,7 @@ class TeamMemberController extends Controller
      */
     public function create()
     {
-        return view('admin.team-members.create');
+        return view('Admin.team-members.create');
     }
 
     /**
@@ -70,7 +70,7 @@ class TeamMemberController extends Controller
      */
     public function edit(TeamMember $team_member )
     {
-        return view('admin.team-members.edit', [
+        return view('Admin.team-members.edit', [
 
             'teamMember' => $team_member
         ]);

@@ -18,7 +18,7 @@ class HospitalCategoryImageController extends Controller
     public function create()
     {
         $categories = HospitalCategory::orderBy('order')->get();
-        return view('admin.product.hospital.gallery.create', compact('categories'));
+        return view('Admin.product.hospital.gallery_items.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -34,7 +34,7 @@ class HospitalCategoryImageController extends Controller
 
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $idx => $file) {
-                $path = $file->store('hospital/gallery', 'public');
+                $path = $file->store('hospital/gallery_items', 'public');
                 HospitalCategoryImage::create([
                     'category_id' => $request->category_id,
                     'image'       => $path,
@@ -51,7 +51,7 @@ class HospitalCategoryImageController extends Controller
     public function edit(HospitalCategoryImage $hospital_gallery)
     {
         $categories = HospitalCategory::orderBy('order')->get();
-        return view('admin.product.hospital.gallery.edit', [
+        return view('Admin.product.hospital.gallery_items.edit', [
             'item' => $hospital_gallery,
             'categories' => $categories
         ]);
@@ -70,7 +70,7 @@ class HospitalCategoryImageController extends Controller
 
         if ($request->hasFile('image')) {
             if ($hospital_gallery->image) Storage::disk('public')->delete($hospital_gallery->image);
-            $hospital_gallery->image = $request->file('image')->store('hospital/gallery', 'public');
+            $hospital_gallery->image = $request->file('image')->store('hospital/gallery_items', 'public');
         }
 
         $hospital_gallery->category_id = $request->category_id;

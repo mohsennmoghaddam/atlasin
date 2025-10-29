@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     {
         $RealAdmin = User::query()->create([
 
-            'role_id'=> Role::query()->where('name' , 'Real-admin')->first()->id,
+            'role_id'=> Role::query()->where('name' , 'Real-Admin')->first()->id,
 
             'mobile' => '09104014271',
 
@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
 
         $RealAdmin2 = User::query()->create([
 
-            'role_id'=> Role::query()->where('name' , 'Real-admin')->first()->id ,
+            'role_id'=> Role::query()->where('name' , 'Real-Admin')->first()->id ,
 
             'mobile' => '09121092478',
 

@@ -18,7 +18,7 @@ class HospitalCategoryCatalogController extends Controller
     public function create()
     {
         $categories = HospitalCategory::orderBy('order')->get();
-        return view('admin.product.hospital.catalog.create', compact('categories'));
+        return view('Admin.product.hospital.catalog.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -48,7 +48,7 @@ class HospitalCategoryCatalogController extends Controller
     public function edit(HospitalCategoryCatalog $hospital_catalog)
     {
         $categories = HospitalCategory::orderBy('order')->get();
-        return view('admin.product.hospital.catalog.edit', [
+        return view('Admin.product.hospital.catalog.edit', [
             'item' => $hospital_catalog,
             'categories' => $categories,
         ]);

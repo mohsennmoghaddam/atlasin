@@ -15,7 +15,7 @@ class HomecareTextSectionController extends Controller
 
     public function create()
     {
-        return view('admin.product.homecare.text.create');
+        return view('Admin.product.homecare.text.create');
     }
 
     public function store(Request $request)
@@ -50,7 +50,7 @@ class HomecareTextSectionController extends Controller
 
     public function edit(HomecareTextSection $homecare_text)
     {
-        return view('admin.product.homecare.text.edit', compact('homecare_text'));
+        return view('Admin.product.homecare.text.edit', compact('homecare_text'));
     }
 
     public function update(Request $request, HomecareTextSection $homecare_text)

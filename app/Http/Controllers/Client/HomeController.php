@@ -31,6 +31,9 @@ class HomeController extends Controller
 
         $whyUs = WhyUs::with('items')->first();
 
+        $whyUsSections = \App\Models\WhyUs::with('items')
+            ->get();
+
         $hospitals =  Hospital::all();
 
         $globalFaqs = Faq::all();
@@ -49,9 +52,9 @@ class HomeController extends Controller
 
         // مسیر ویو طبق زبان
         if ($locale === 'fa') {
-            return view('client.FA.home.index', compact('sliders' , 'about' , 'services' , 'members' , 'whyUs' , 'hospitals' , 'globalFaqs' , 'blogs' , 'categories'));
+            return view('Client.FA.home.index', compact('sliders' , 'about' , 'services' , 'members' , 'whyUs' , 'hospitals' , 'globalFaqs' , 'blogs' , 'categories' ,'whyUsSections'));
         } else {
-            return view('client.EN.home.index', compact('sliders' , 'about' , 'services' , 'members' , 'whyUs' ,  'hospitals'  , 'globalFaqs' , 'blogs' , 'categories'));
+            return view('Client.EN.home.index', compact('sliders' , 'about' , 'services' , 'members' , 'whyUs' ,  'hospitals'  , 'globalFaqs' , 'blogs' , 'categories' ,'whyUsSections'));
         }
     }
 }

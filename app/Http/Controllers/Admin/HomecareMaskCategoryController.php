@@ -17,17 +17,17 @@ class HomecareMaskCategoryController extends Controller
 
     public function create()
     {
-        return view('admin.product.homecare.mask.create');
+        return view('Admin.product.homecare.mask.create');
     }
 
     public function store(Request $request)
     {
         $data = $request->validate([
-            'title.fa'   => 'required|string|max:255',
-            'title.en'   => 'required|string|max:255',
+            'title.fa'   => 'required|string',
+            'title.en'   => 'required|string',
             'order'      => 'nullable|integer|min:1',
             // چند فایل تصویر:
-            'images.*'   => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
+            'images.*'   => 'nullable|image|mimes:jpg,jpeg,png',
         ]);
 
         $category = HomecareMaskCategory::create([
@@ -54,7 +54,7 @@ class HomecareMaskCategoryController extends Controller
     public function edit(HomecareMaskCategory $homecare_mask_category)
     {
         $category = $homecare_mask_category->load('items');
-        return view('admin.product.homecare.mask.edit', compact('category'));
+        return view('Admin.product.homecare.mask.edit', compact('category'));
     }
 
     public function update(Request $request, HomecareMaskCategory $homecare_mask_category)

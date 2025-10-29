@@ -19,9 +19,9 @@ class ContactUsController extends Controller
 
         if ($locale === 'fa') {
 
-            return view('client.FA.ContactUs.index', compact( 'locale' , 'services'));
+            return view('Client.FA.ContactUs.index', compact( 'locale' , 'services'));
         } else {
-            return view('client.EN.ContactUs.index', compact( 'locale' , 'services'));
+            return view('Client.EN.ContactUs.index', compact( 'locale' , 'services'));
         }
     }
 

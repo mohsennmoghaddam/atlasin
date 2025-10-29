@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Hospital;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class HospitalController extends Controller
@@ -14,7 +15,7 @@ class HospitalController extends Controller
      */
     public function index()
     {
-        return view('admin.hospital.index' , [
+        return view('Admin.hospital.index' , [
 
             'hospitals' => Hospital::all()
         ]);
@@ -25,31 +26,105 @@ class HospitalController extends Controller
      */
     public function create()
     {
-        return view('admin.hospital.create');
+        return view('Admin.hospital.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
+//    public function store(Request $request)
+//    {
+//        $request->validate([
+//            'name' => 'required|string|max:255',
+//            'website' => 'nullable|url',
+//            'description' => 'nullable|string',
+//            'image' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+//        ]);
+//
+//        $imagePath = $request->file('image')->store('hospitals', 'public');
+//
+//        Hospital::create([
+//            'name' => $request->name,
+//            'website' => $request->website,
+//            'description' => $request->description,
+//            'image' => $imagePath,
+//        ]);
+//
+//        return redirect()->route('hospitals.index')->with('success', 'بیمارستان ثبت شد.');
+//    }
+
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'website' => 'nullable|url',
-            'description' => 'nullable|string',
-            'image' => 'required|image|mimes:jpg,jpeg,png|max:2048',
-        ]);
+        // تشخیص حالت تکی یا چندتایی
+        $single = $request->hasFile('image');
+        $multi  = $request->hasFile('images');
 
-        $imagePath = $request->file('image')->store('hospitals', 'public');
+        if (! $single && ! $multi) {
+            return back()->withErrors(['image' => 'حداقل یک عکس انتخاب کنید.']);
+        }
 
-        Hospital::create([
-            'name' => $request->name,
-            'website' => $request->website,
-            'description' => $request->description,
-            'image' => $imagePath,
-        ]);
+        // ✅ ولیدیشن سبک
+        $rules = [
+            'website'        => 'nullable|string',       // دیگه url نیست
+            'description'    => 'nullable|string',
+            'name_strategy'  => 'nullable|in:filename,base_plus_index',
+            'name'           => 'nullable|string|max:255',
+        ];
 
-        return redirect()->route('hospitals.index')->with('success', 'بیمارستان ثبت شد.');
+        if ($single) {
+            $rules['image'] = 'required|image';          // فقط تصویر بودن
+        } else {
+            $rules['images']   = 'required|array|min:1'; // بدون max
+            $rules['images.*'] = 'image';                // فقط تصویر بودن
+        }
+
+        $validated = $request->validate($rules);
+
+        // حالت تکی (رفتار قبلی)
+        if ($single) {
+            $imagePath = $request->file('image')->store('hospitals', 'public');
+
+            \App\Models\Hospital::create([
+                'name'        => $request->name ?? pathinfo($request->file('image')->getClientOriginalName(), PATHINFO_FILENAME),
+                'website'     => $request->website,
+                'description' => $request->description,
+                'image'       => $imagePath,
+            ]);
+
+            return redirect()->route('hospitals.index')->with('success', 'بیمارستان ثبت شد.');
+        }
+
+        // حالت چندتایی
+        $nameStrategy = $request->input('name_strategy', 'filename'); // filename | base_plus_index
+        $created = 0;
+
+        DB::beginTransaction();
+        try {
+            foreach ($request->file('images') as $idx => $file) {
+                $imagePath = $file->store('hospitals', 'public');
+
+                // نام‌گذاری
+                if ($nameStrategy === 'base_plus_index' && $request->filled('name')) {
+                    $name = trim($request->name) . ' ' . ($idx + 1);
+                } else {
+                    $name = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                }
+
+                \App\Models\Hospital::create([
+                    'name'        => $name,
+                    'website'     => $request->website,
+                    'description' => $request->description,
+                    'image'       => $imagePath,
+                ]);
+                $created++;
+            }
+            DB::commit();
+        } catch (\Throwable $e) {
+            DB::rollBack();
+            return back()->withErrors(['images' => 'خطا در ذخیره: '.$e->getMessage()]);
+        }
+
+        return redirect()->route('hospitals.index')->with('success', "{$created} بیمارستان ثبت شد.");
     }
 
 
@@ -66,7 +141,7 @@ class HospitalController extends Controller
      */
     public function edit(Hospital $hospital)
     {
-        return view('admin.hospital.edit' , [
+        return view('Admin.hospital.edit' , [
 
             'hospital' => $hospital
         ]);

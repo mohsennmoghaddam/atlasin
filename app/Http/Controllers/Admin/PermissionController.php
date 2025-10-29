@@ -11,12 +11,12 @@ class PermissionController extends Controller
     {
         $permissions = Permission::latest()->get();
 
-        return view('admin.permission.index', compact('permissions'));
+        return view('Admin.permission.index', compact('permissions'));
     }
 
     public function create()
     {
-        return view('admin.permission.create');
+        return view('Admin.permission.create');
     }
 
     public function store(Request $request)
@@ -37,7 +37,7 @@ class PermissionController extends Controller
 
     public function edit(Permission $permission)
     {
-        return view('admin.permission.edit', compact('permission'));
+        return view('Admin.permission.edit', compact('permission'));
     }
 
     public function update(Request $request, Permission $permission)
@@ -48,13 +48,13 @@ class PermissionController extends Controller
 
         $permission->update(['name' => $request->name]);
 
-        return redirect()->route('admin.permission.index')->with('success', 'دسترسی با موفقیت به‌روزرسانی شد.');
+        return redirect()->route('Admin.permission.index')->with('success', 'دسترسی با موفقیت به‌روزرسانی شد.');
     }
 
     public function destroy(Permission $permission)
     {
         $permission->delete();
 
-        return redirect()->route('admin.permission.index')->with('success', 'دسترسی با موفقیت حذف شد.');
+        return redirect()->route('Admin.permission.index')->with('success', 'دسترسی با موفقیت حذف شد.');
     }
 }

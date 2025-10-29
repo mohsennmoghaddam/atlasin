@@ -14,7 +14,7 @@ class BlogCategoryController extends Controller
     public function index()
     {
         $categories = BlogCategory::latest()->paginate(10);
-        return view('admin.blog_categories.index', compact('categories'));
+        return view('Admin.blog_categories.index', compact('categories'));
     }
 
 
@@ -23,7 +23,7 @@ class BlogCategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.blog_categories.create');
+        return view('Admin.blog_categories.create');
     }
 
 
@@ -62,7 +62,7 @@ class BlogCategoryController extends Controller
      */
     public function edit(BlogCategory $blogCategory)
     {
-        return view('admin.blog_categories.edit', compact('blogCategory'));
+        return view('Admin.blog_categories.edit', compact('blogCategory'));
     }
 
 

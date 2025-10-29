@@ -30,12 +30,12 @@ class HomecareSectionController extends Controller
         }])->orderBy('order')->get();
 
 
-        return view('admin.product.homecare.first.index', compact('homecare', 'sliders' , 'cards' , 'texts'  , 'features' ,'maskCategories'));
+        return view('Admin.product.homecare.first.index', compact('homecare', 'sliders' , 'cards' , 'texts'  , 'features' ,'maskCategories'));
     }
 
     public function create()
     {
-        return view('admin.product.homecare.first.create');
+        return view('Admin.product.homecare.first.create');
     }
 
     public function store(Request $request)
@@ -58,7 +58,7 @@ class HomecareSectionController extends Controller
 
     public function edit(HomecareSection $homecare)
     {
-        return view('admin.product.homecare.first.edit', compact('homecare'));
+        return view('Admin.product.homecare.first.edit', compact('homecare'));
     }
 
     public function update(Request $request, HomecareSection $homecare)

@@ -15,7 +15,7 @@ class HospitalCategoryController extends Controller
 
     public function create()
     {
-        return view('admin.product.hospital.category.create');
+        return view('Admin.product.hospital.category.create');
     }
 
     public function store(Request $request)
@@ -45,7 +45,9 @@ class HospitalCategoryController extends Controller
 
     public function edit(HospitalCategory $hospital_category)
     {
-        return view('admin.product.hospital.category.edit', compact('hospital_category'));
+        return view('Admin.product.hospital.category.edit', [
+            'category' => $hospital_category
+        ]);
     }
 
     public function update(Request $request, HospitalCategory $hospital_category)
@@ -56,7 +58,7 @@ class HospitalCategoryController extends Controller
             'title.en'      => 'required|string|max:255',
             'subtitle.fa'   => 'nullable|string|max:255',
             'subtitle.en'   => 'nullable|string|max:255',
-            'icon'          => 'nullable|image|mimes:jpg,jpeg,png,webp,svg|max:4096',
+            'icon'          => 'nullable|image|mimes:jpg,jpeg,png,webp,svg|max:9999',
             'order'         => 'nullable|integer|min:1',
         ]);
 
